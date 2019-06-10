@@ -1,0 +1,48 @@
+*, *:before, *:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: sans-serif;
+    background-color: #141b1f;
+}
+
+.container {
+    width: $site_width;
+    height: 100vh;
+    margin: auto;
+    display: grid;
+    grid-template-columns: $site_sidebar_width 1fr;
+    grid-template-rows: $site_header_height 1fr $site_footer_height;
+    grid-template-areas:
+      "header header"
+      "sidebar content"
+      "footer footer";
+    box-shadow: 0 0 24px #000;
+
+    &.container-home {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "header header"
+          "content content"
+          "footer footer";
+    }
+}
+
+main {
+    grid-area: content;
+    background-color: #e8e8e8;
+}
+
+footer {
+    z-index: 1;
+    grid-area: footer;
+    font-size: .8rem;
+    line-height: $site_footer_height;
+    text-align: center;
+    color: #666;
+    background-color: #000;
+    box-shadow: 0 -4px 8px rgba(#000, .5);
+}

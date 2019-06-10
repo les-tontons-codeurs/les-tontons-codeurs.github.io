@@ -1,0 +1,19 @@
+title: Les Tontons Codeurs
+brand: les tontons cod<span class="highlight">3</span>urs
+copyright:
+    start: 2018
+    name: Les Tontons Codeurs
+
+collections:
+    tutoriels:
+        output: true
+        permalink: /tutos/:path/
+
+defaults:
+    - scope:
+        type: "tutoriels"
+      values:
+        layout: default
+
+sass:
+    style: compressed

@@ -1,0 +1,48 @@
+<pre>
+uint8_t Sprite::getWidth() {
+    return this->w;
+}
+
+uint8_t Sprite::getHeight() {
+    return this->h;
+}
+
+int16_t Sprite::getX() {
+    return this->x;
+}
+
+int16_t Sprite::getY() {
+    return this->y;
+}
+
+void Sprite::setX(int16_t x) {
+    this->x = x;
+}
+
+void Sprite::setY(int16_t y) {
+    this->y = y;
+}
+
+void Sprite::draw(uint8_t sliceY, uint8_t sliceHeight, uint16_t* buffer) {
+    int16_t startIndex = y <= sliceY ? 0 : y - sliceY;
+    int16_t endIndex =
+        y + h >= sliceY + sliceHeight
+        ? sliceHeight - 1
+        : y + h - sliceY - 1;
+    uint8_t df = frame*w;
+    uint16_t pixel;
+    uint8_t px,py;
+    for (py = startIndex; py <= endIndex; py++) {
+        int16_t dy = sliceY - y + py;
+        this->oy && (dy = h - 1 - dy);
+        for (px = x; px < x + w; px++) {
+            int16_t dx = px - x;
+            this->ox && (dx = w - 1 - dx);
+            pixel = this->colormap[(dy+df)*w + dx];
+            if (value != this->transcolor) {
+                buffer[px + py * SCREEN_WIDTH] = pixel;
+            }
+        }
+    }
+}
+</pre>
