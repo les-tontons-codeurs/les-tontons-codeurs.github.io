@@ -4,28 +4,42 @@
 <head>
     <meta charset="utf-8">
     <title>{{ site.title }}</title>
-    <link rel="stylesheet" href="/assets/css/styles.css">
-    <link rel="stylesheet" href="/assets/css/splash.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/styles.css">
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/home.css">
 </head>
 
 <body>
 
-    <div class="container container-home">
-
-        {% include navigation.html %}
+    {% include navigation.html %}
+    
+    <div class="wrapper">
         
-        <main>
-
-            {% include splash.html %}
-
-            <div class="page">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi illo commodi velit, impedit voluptas sapiente blanditiis, hic distinctio quas porro ullam nesciunt laudantium eius necessitatibus sint placeat. Harum, architecto. Officiis asperiores minima cum. Voluptate ea tempore incidunt voluptatibus suscipit iure nisi blanditiis ex, enim, accusamus id dicta nihil. Ex rerum, ab ratione tempora eveniet harum voluptas quaerat. Veniam quis, similique pariatur sed eveniet tenetur voluptatem beatae, corrupti harum architecto repudiandae rem possimus deserunt dicta aliquid alias maxime aliquam quod voluptatum amet porro dolorem ipsa accusamus? Earum aut beatae officia. Tenetur nesciunt voluptatibus, ducimus nulla incidunt quod, maiores beatae in praesentium non error alias dicta sint. Error possimus blanditiis dolor mollitia nulla temporibus itaque cumque unde aperiam molestiae adipisci exercitationem, illo natus animi suscipit dolorum praesentium voluptate obcaecati recusandae, quaerat harum. Aliquam quas odit enim, ad praesentium consectetur aliquid ipsum impedit aperiam deserunt. Laboriosam totam suscipit omnis natus enim, quod minima cum, delectus quibusdam doloremque, illo sequi asperiores. Similique, quod saepe quae vitae pariatur voluptatum itaque corrupti ducimus qui, eius, officiis quis nemo maiores cum fugiat laborum ipsum sequi. Minima qui consectetur, ab nisi commodi maxime nihil quasi accusantium, architecto harum reprehenderit sequi laudantium fugit facere labore possimus voluptatibus minus non!
+        <div class="splash">
+            <div class="blend-tint"></div>
+            <div class="overlay-tint"></div>
+            <div class="gamebuino"><div class="screen"></div></div>
+            <div class="pygamer"><div class="screen"></div></div>
+            <div class="torches">
+                <div class="torch torch1"></div>
+                <div class="torch torch2"></div>
+                <div class="torch torch3"></div>
             </div>
+        </div>
+        
+        <div class="team">
+            <div class="member max"><span>max</span></div>
+            <div class="member steph"><span>steph</span></div>
+            <div class="member titi"><span>titi</span></div>
+        </div>
+
+        <main class="page">
+            {{ page.content }}
         </main>
-        
-        {% include footer.html %}
-        
+
     </div>
+    
+    {% include footer.html %}
 
 </body>
 

@@ -1,5 +1,7 @@
+# baseurl: /tontons
+baseurl: ''
 title: Les Tontons Codeurs
-brand: les tontons cod<span class="highlight">3</span>urs
+brand: les tontons cod[3]urs
 copyright:
     start: 2018
     name: Les Tontons Codeurs
@@ -13,7 +15,7 @@ defaults:
     - scope:
         type: "tutoriels"
       values:
-        layout: default
+        layout: article
 
 sass:
     style: compressed
