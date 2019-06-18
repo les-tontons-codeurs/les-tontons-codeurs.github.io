@@ -2,7 +2,7 @@
     {% assign year = "now" | date: "%Y" | plus: 0 %}
     {% assign start = site.copyright.start %}
     {% if year > start %}
-      {% assign prefix = start | append: '-' %}
+        {% assign prefix = start | append: '-' %}
     {% endif %}
     &copy {{ year | prepend: prefix }} {{ site.copyright.name }}
 </footer>

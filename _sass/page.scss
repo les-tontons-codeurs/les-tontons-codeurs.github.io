@@ -1,6 +1,17 @@
+// -------------------------------------------------------------------------
+// mise en forme du contenu rédactionnel
+// -------------------------------------------------------------------------
+
 .page {
     padding: 40px 60px;
     line-height: 1.75rem;
     text-align: justify;
     color: #666;
+}
+
+@media screen and (max-width: 600px) {
+    .page {
+        padding: 20px 30px;
+        line-height: 1.5rem;
+    }
 }
