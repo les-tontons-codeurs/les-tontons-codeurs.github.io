@@ -1,21 +1,24 @@
-# baseurl: /tontons
-baseurl: ''
+# baseurl: '/tontons'
 title: Les Tontons Codeurs
 brand: les tontons cod[3]urs
-copyright:
-    start: 2018
-    name: Les Tontons Codeurs
+copyright: 2018
 
 collections:
-    tutoriels:
-        output: true
-        permalink: /tutos/:path/
+  tutos:
+    output: true
+    permalink: /tutos/:path/
 
 defaults:
-    - scope:
-        type: "tutoriels"
-      values:
-        layout: article
+  - scope:
+      type: "posts"
+    values:
+      layout: article
+  - scope:
+      type: "tutos"
+    values:
+      layout: article
+
+permalink: pretty
 
 sass:
-    style: compressed
+  style: compressed

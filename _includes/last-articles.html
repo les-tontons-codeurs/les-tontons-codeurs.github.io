@@ -1,0 +1,89 @@
+<ul class="panel">
+
+    {% comment %}
+    
+        -----------------------------------------------------------
+        Ici on utilise une variable `collection` qui est passée
+        par la balise d'inclusion du template.
+        
+        Voici quelques exemples d'inclusion :
+        - include last-articles.html collection=site.posts
+        - include last-articles.html collection=site.tutos
+        
+        La variable `collection` peut ensuite être utilisée avec :
+        - include.collection
+        -----------------------------------------------------------
+
+    {% endcomment %}
+
+    {% assign sorted = (include.collection | sort: 'date') | reverse %}
+
+    {% for article in sorted %}
+
+        {% assign year    = article.date | date: "%Y"  | plus:  0 %}
+        {% assign month   = article.date | date: "%-m" | minus: 1 %}
+        {% assign day     = article.date | date: "%d"  | plus:  0 %}
+        {% assign weekday = article.date | date: "%w"  | plus:  0 %}
+
+        {% assign month = site.data.date.month[month] %}
+
+        {% if day == 1 %}
+            {% assign day = day | append: 'er' %}
+        {% endif %}
+
+        {% assign weekday = site.data.date.day[weekday] %}
+
+        <li>
+
+            <div class="icon {{ article.icon }}"></div>
+
+            <div class="details">
+
+                <p class="publish">
+                    <span class="date">{{ weekday }} {{ day }} {{ month }} {{ year }}</span>
+                    <span class="author">
+
+                        {% assign authors = [] %}
+                        {% for a in article.author %}
+                            {% assign author  = site.data.authors | where: 'key', a | map: 'nick' %}
+                            {% assign authors = authors | concat: author %}
+                        {% endfor %}
+                        {{ authors | join: ', ' }}
+
+                    </span>
+                </p>
+
+                <h1 class="title">
+                    <a href="{{ site.baseurl | append: article.url }}">
+                        {{ article.title }}
+                    </a>
+                </h1>
+
+                <ul class="metadata">
+
+                    {% for type in article.type %}
+                        <li class="type">{{ type }}</li>
+                    {% endfor %}
+
+                    {% for p in article.platform %}
+                        <li class="platform">{{ site.data.platforms | where: 'key', p | map: 'name' }}</li>
+                    {% endfor %}
+
+                    {% for lang in article.lang %}
+                        <li class="lang">{{ lang }}</li>
+                    {% endfor %}
+
+                    {% for tag in article.tags %}
+                        <li class="tag">{{ tag }}</li>
+                    {% endfor %}
+
+                </ul>
+
+                <p class="description">{{ article.excerpt | strip_html }}</p>
+
+            </div>
+        </li>
+
+    {% endfor %}
+
+</ul>

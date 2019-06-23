@@ -1,5 +1,5 @@
 // -------------------------------------------------------------------------
-// cartouche principal du contenu
+// cartouche principal d'une page en simple colonnage
 // -------------------------------------------------------------------------
 
 .wrapper {
@@ -14,6 +14,7 @@
 
 .page {
     // padding: 40px 60px;
+    padding-bottom: 3rem;
     line-height: 1.75rem;
     color: $page_text_color;
 }
@@ -84,7 +85,7 @@
             line-height: $height;
             text-align: center;
             // text-transform: capitalize;
-            text-shadow: 0 2px 2px rgba(#000, .75);
+            text-shadow: 0 2px 2px rgba(#000, .5);
         }
     }
 }
@@ -113,10 +114,11 @@
             background-repeat: no-repeat;
             box-shadow: 0 2px 4px rgba(#000, .25);
 
-            &.adafruit  { background-image: url('../images/logo-adafruit.svg');  }
-            &.blit      { background-image: url('../images/logo-32blit.svg');    }
-            &.gamebuino { background-image: url('../images/logo-gamebuino.svg'); }
-            &.pixelart  { background-image: url('../images/logo-pixelart.svg');  }
+            &.adafruit  { background-image: url('../icons/adafruit.svg');  }
+            &.blit      { background-image: url('../icons/32blit.svg');    }
+            &.gamebuino { background-image: url('../icons/gamebuino.svg'); }
+            &.pixelart  { background-image: url('../icons/pixelart.svg');  }
+            &.tontons   { background-image: url('../icons/tontons-codeurs.svg');  }
         }
 
         .details {
@@ -126,6 +128,12 @@
                 margin: .5rem 0;
                 font-family: 'Roboto Condensed', sans-serif;
                 font-size: 1.5rem;
+
+                a {
+                    transition: color .5s ease;
+                    color: #8d66ff;
+                    &:hover, &.active { color: #000; } // #8000ff;
+                }
             }
 
             .publish {
@@ -140,18 +148,20 @@
 
                 .author {
                     margin-left: 1em;
-                    color: #a080ff;
+                    color: #0ac;
+                    // color: #a080ff;
 
                     &:before {
                         margin-right: .5em;
                         font-family: "Font Awesome 5 Free";
                         font-weight: 900;
-                        content: '\f007';
+                        // content: '\f007'; // user
+                        content: '\f5ad'; // pen-nib
                     }
                 }
             }
 
-            .tags {
+            .metadata {
                 margin: .5rem 0;
                 font-size: .8rem;
                 line-height: 1em;
@@ -163,14 +173,13 @@
                     border-radius: 4px;
 
                     color: #ffff;
-                    background-color: #01999e;
                     text-shadow: 0 -1px 0 rgba(#000, .25);
                     box-shadow: 0 1px 2px rgba(#000, .25);
 
-                    &.info     { background-color: #08d; }
-                    &.guide    { background-color: #f80; }
-                    &.tuto     { background-color: #a00; }
+                    &.type     { background-color: #a00; }
                     &.platform { background-color: #444; }
+                    &.lang     { background-color: #08d; }
+                    &.tag      { background-color: #01999e; }
                 }
             }
 
@@ -187,11 +196,40 @@
         h2.subtitle { font-size: 1.1rem; }
     }
 
-    .heading .container h1{
-        font-size: 1.75rem;
+    .heading {
+        $height: 104px;
+
+        height: $height;
+
+        .container h1{
+            font-size: 1.75rem;
+            line-height: $height;
+        }
     }
 
     .panel li {
         .icon { display: none; }
+    }
+}
+
+a.button {
+    display: inline-block;
+    padding: .3em 1em;
+    vertical-align: baseline;
+    white-space: nowrap;
+    
+    font-size: 1.1rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+    
+    cursor: pointer;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #6f55d5;
+    background-image: linear-gradient(#6f55d5, #5739ce);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.25), 0 4px 10px rgba(0,0,0,0.12);
+
+    &:hover {
+        background-image: none;
     }
 }

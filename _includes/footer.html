@@ -1,8 +1,8 @@
 <footer>
     {% assign year = "now" | date: "%Y" | plus: 0 %}
-    {% assign start = site.copyright.start %}
+    {% assign start = site.copyright %}
     {% if year > start %}
         {% assign prefix = start | append: '-' %}
     {% endif %}
-    &copy {{ year | prepend: prefix }} {{ site.copyright.name }}
+    &copy {{ year | prepend: prefix }} {{ site.title }}
 </footer>

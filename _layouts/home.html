@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/styles.css">
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/home.css">
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/single.css">
     {% include favicons.html %}
 </head>
 
@@ -17,118 +18,59 @@
     
     <div class="wrapper">
         
-        <div class="splash">
-            <div class="blend-tint"></div>
-            <div class="overlay-tint"></div>
-            <div class="gamebuino"><div class="screen"></div></div>
-            <div class="pygamer"><div class="screen"></div></div>
-            <div class="torches">
-                <div class="torch torch1"></div>
-                <div class="torch torch2"></div>
-                <div class="torch torch3"></div>
-            </div>
-        </div>
-        
-        <div class="team">
-            <div class="member max"><span class="name">max</span></div>
-            <div class="member steph"><span class="name">steph</span></div>
-            <div class="member titi"><span class="name">titi</span></div>
-        </div>
+        {% include home-header.html %}
 
         <main class="page">
+
+            {% comment %}
+            -----------------------------------------------------------
+            L'en-tête de la page
+            -----------------------------------------------------------
+            {% endcomment %}
 
             <div class="topheading">
                 <h1 class="title">{{ site.title }}</h1>
                 <h2 class="subtitle">Nous partageons avec vous nos expérimentations et réalisations</h2>
             </div>
 
+            {% comment %}
+            -----------------------------------------------------------
+            Les derniers posts
+            -----------------------------------------------------------
+            {% endcomment %}
+
             <div class="heading">
                 <div class="container">
-                    <h1>Nos dernières publications</h1>
+                    <h1>Nos derniers bulletins</h1>
+                </div>
+            </div>
+                
+            {% include last-articles.html collection=site.posts %}
+
+            <p class="center"><a class="button" href="#">Tous nos bulletins</a></p>
+
+            {% comment %}
+            -----------------------------------------------------------
+            Les derniers contenus pédagogiques
+            -----------------------------------------------------------
+            {% endcomment %}
+
+            <div class="heading">
+                <div class="container">
+                    <h1>Nos derniers tutoriels</h1>
                 </div>
             </div>
 
-            <ul class="panel">
+            {% include last-articles.html collection=site.tutos %}
 
-                <li>
-                    <div class="icon blit"></div>
-                    <div class="details">
-                        <p class="publish">
-                            <span class="date">samedi 27 juillet 2019</span>
-                            <span class="author">Titi</span>
-                        </p>
-                        <h1 class="title">Découverte de la console 32blit de Pimoroni</h1>
-                        <ul class="tags">
-                            <li class="info">Info</li>
-                            <li class="platform">32blit</li>
-                            <li>Lua</li>
-                            <li>C++</li>
-                            <li>test</li>
-                        </ul>
-                        <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque ipsum voluptas alias sed aliquid molestias, minus harum cum iure. Explicabo dolor amet aspernatur ipsam sapiente similique repellendus cumque animi voluptate adipisci nam nostrum veritatis perferendis earum necessitatibus odio impedit magnam, in, consequuntur voluptas quos. Facere nulla voluptatem iusto assumenda a.</p>
-                    </div>
-                </li>
+            <p class="center"><a class="button" href="#">Tous nos tutoriels</a></p>
 
-                <li>
-                    <div class="icon adafruit"></div>
-                    <div class="details">
-                        <p class="publish">
-                            <span class="date">jeudi 20 juin 2019</span>
-                            <span class="author">Steph</span>
-                        </p>
-                        <h1 class="title">Apprends à coder un Platformer 2D complet</h1>
-                        <ul class="tags">
-                            <li class="tuto">Tuto</li>
-                            <li class="platform">PyGamer</li>
-                            <li>C++</li>
-                            <li>platformer</li>
-                            <li>moteur physique</li>
-                        </ul>
-                        <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque ipsum voluptas alias sed aliquid molestias, minus harum cum iure. Explicabo dolor amet aspernatur ipsam sapiente similique repellendus cumque animi voluptate adipisci nam nostrum veritatis perferendis earum necessitatibus odio impedit magnam, in, consequuntur voluptas quos. Facere nulla voluptatem iusto assumenda a.</p>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="icon pixelart"></div>
-                    <div class="details">
-                        <p class="publish">
-                            <span class="date">dimanche 2 juin 2019</span>
-                            <span class="author">Max</span>
-                        </p>
-                        <h1 class="title">Guide pratique des outils de PixelArt</h1>
-                        <ul class="tags">
-                            <li class="guide">Guide</li>
-                            <li class="platform">PixelArt</li>
-                            <li>sprites</li>
-                            <li>tilemaps</li>
-                            <li>animation</li>
-                        </ul>
-                        <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque ipsum voluptas alias sed aliquid molestias, minus harum cum iure. Explicabo dolor amet aspernatur ipsam sapiente similique repellendus cumque animi voluptate adipisci nam nostrum veritatis perferendis earum necessitatibus odio impedit magnam, in, consequuntur voluptas quos. Facere nulla voluptatem iusto assumenda a.</p>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="icon gamebuino"></div>
-                    <div class="details">
-                        <p class="publish">
-                            <span class="date">mardi 21 mai 2019</span>
-                            <span class="author">Steph</span>
-                        </p>
-                        <h1 class="title">Le Jeu de la Vie de John Conway</h1>
-                        <ul class="tags">
-                            <li class="tuto">Tuto</li>
-                            <li class="platform">Gamebuino</li>
-                            <li>C++</li>
-                            <li>automates cellulaires</li>
-                            <li>vie artiicielle</li>
-                        </ul>
-                        <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque ipsum voluptas alias sed aliquid molestias, minus harum cum iure. Explicabo dolor amet aspernatur ipsam sapiente similique repellendus cumque animi voluptate adipisci nam nostrum veritatis perferendis earum necessitatibus odio impedit magnam, in, consequuntur voluptas quos. Facere nulla voluptatem iusto assumenda a.</p>
-                    </div>
-                </li>
-
-            </ul>
-
+            {% comment %}
+            -----------------------------------------------------------
+            La page d'accueil n'a pas de contenu particulier a priori
             {{ page.content }}
+            -----------------------------------------------------------
+            {% endcomment %}
 
         </main>
 
