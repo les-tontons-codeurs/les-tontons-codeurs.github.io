@@ -1,14 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
+
     <meta charset="utf-8">
-    <title>{{ site.title }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="language" content="FR">
+    <meta name="author" content="{{ site.data.authors | where: 'key', page.author | map: 'name' }}">
+    <meta name="copyright" content="{{ site.title }}">
+    <meta name="subject" content="{{ site.subject }}">
+    <meta name="description" content="{{ page.excerpt | strip_html | strip_newlines }}">
+    
+    {% comment %}
+    -----------------------------------------------------------
+    Définition des mots-clefs
+    -----------------------------------------------------------
+    {% endcomment %}
+
+    {% assign keywords = '' %}
+
+    {% for p in page.platforms %}
+        {% assign platform = site.data.platforms | where: "key", p | map: 'name' | first %}
+        {% assign keywords = keywords | append: platform | append: ',' %}
+    {% endfor %}
+
+    {% for l in page.languages %}
+        {% assign lang = site.data.languages | where: "key", l | map: 'name' | first %}
+        {% assign keywords = keywords | append: lang | append: ',' %}
+    {% endfor %}
+
+    {% for t in page.tags %}
+        {% assign keywords = keywords | append: t | append: ',' %}
+    {% endfor %}
+    
+    <meta name="keywords" content="{{ keywords | split: ',' | uniq | join: ', ' }}">
+
+    {% comment %}
+    -----------------------------------------------------------
+    Fin de définition des mots-clefs
+    -----------------------------------------------------------
+    {% endcomment %}
+
+    <title>{{ page.title }} | {{ site.title }}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/styles.css">
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/article.css">
+
     {% include favicons.html %}
+
 </head>
 
 <body>
@@ -16,9 +55,54 @@
     {% include navigation.html %}
     
     <div class="wrapper">
-        <main class="page">
-            {{ page.content }}
-        </main>
+        <article class="page">
+
+            {% comment %}
+            -----------------------------------------------------------
+            Calcul de la date à afficher
+            -----------------------------------------------------------
+            {% endcomment %}
+
+            {% assign year    = page.date | date: "%Y"  | plus:  0 %}
+            {% assign month   = page.date | date: "%-m" | minus: 1 %}
+            {% assign day     = page.date | date: "%d"  | plus:  0 %}
+            {% assign weekday = page.date | date: "%w"  | plus:  0 %}
+
+            {% assign month = site.data.date.month[month] %}
+
+            {% if day == 1 %}
+                {% assign day = day | append: 'er' %}
+            {% endif %}
+
+            {% assign weekday = site.data.date.day[weekday] %}
+
+            {% comment %}
+            -----------------------------------------------------------
+            Fin du calcul de la date
+            -----------------------------------------------------------
+            {% endcomment %}
+
+            <header>
+                <h1>{{ page.title }}</h1>
+                {% if page.subtitle %}
+                    <h2>{{ page.subtitle }}</h2>
+                {% endif %}
+                <p class="date">Article publié le {{ weekday }} {{ day }} {{ month }} {{ year }}</p>
+            </header>
+
+            <section class="preamble">
+                {{ page.excerpt }}
+            </section>
+
+            <section class="body">
+                {{ page.content | remove: page.excerpt }}
+            </section>
+
+            <footer>
+
+            </footer>
+
+        </article>
     </div>
     
     {% include sidebar.html %}

@@ -1,0 +1,12 @@
+- key: c
+  name: C
+- key: cpp
+  name: C++
+- key: js
+  name: JavaScript
+- key: lua
+  name: Lua
+- key: mc
+  name: MakeCode
+- key: py
+  name: Python

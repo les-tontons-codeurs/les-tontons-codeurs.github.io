@@ -1,12 +1,12 @@
-# baseurl: '/tontons'
 title: Les Tontons Codeurs
 brand: les tontons cod[3]urs
+subject: Expérimentations ludiques sur microcontrôleurs
 copyright: 2018
 
 collections:
-  tutos:
+  guides:
     output: true
-    permalink: /tutos/:path/
+    permalink: /guides/:path/
 
 defaults:
   - scope:
@@ -14,11 +14,15 @@ defaults:
     values:
       layout: article
   - scope:
-      type: "tutos"
+      type: "guides"
     values:
       layout: article
 
 permalink: pretty
+
+# excerpt_separator: "<!--more-->"
+
+highlighter: rouge
 
 sass:
   style: compressed

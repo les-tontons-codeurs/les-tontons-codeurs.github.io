@@ -1,6 +1,16 @@
 - key: 32blit
   name: 32blit
-- key: pygamer
-  name: PyGamer
+- key: arduboy
+  name: Arduboy
+- key: arduino
+  name: Arduino
 - key: gamebuino
   name: Gamebuino
+- key: gameshell
+  name: GameShell
+- key: microbit
+  name: micro:bit
+- key: pewpew
+  name: Pew Pew
+- key: pygamer
+  name: PyGamer

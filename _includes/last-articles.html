@@ -35,9 +35,19 @@
 
         <li>
 
-            <div class="icon {{ article.icon }}"></div>
+            {% if article.icon %}
+                <div class="icon {{ site.data.icon | where: 'key', article.icon | map: 'class' }}"></div>
+            {% else %}
+                <div class="icon tontons"></div>
+            {% endif %}
 
             <div class="details">
+
+                <h1 class="title">
+                    <a href="{{ site.baseurl | append: article.url }}">
+                        {{ article.title }}
+                    </a>
+                </h1>
 
                 <p class="publish">
                     <span class="date">{{ weekday }} {{ day }} {{ month }} {{ year }}</span>
@@ -53,24 +63,18 @@
                     </span>
                 </p>
 
-                <h1 class="title">
-                    <a href="{{ site.baseurl | append: article.url }}">
-                        {{ article.title }}
-                    </a>
-                </h1>
-
                 <ul class="metadata">
 
-                    {% for type in article.type %}
-                        <li class="type">{{ type }}</li>
+                    {% for t in article.type %}
+                        <li class="type">{{ site.data.type | where: 'key', t | map: 'name' }}</li>
                     {% endfor %}
 
-                    {% for p in article.platform %}
+                    {% for p in article.platforms %}
                         <li class="platform">{{ site.data.platforms | where: 'key', p | map: 'name' }}</li>
-                    {% endfor %}
-
-                    {% for lang in article.lang %}
-                        <li class="lang">{{ lang }}</li>
+                        {% endfor %}
+                        
+                    {% for l in article.languages %}
+                        <li class="lang">{{ site.data.languages | where: 'key', l | map: 'name' }}</li>
                     {% endfor %}
 
                     {% for tag in article.tags %}

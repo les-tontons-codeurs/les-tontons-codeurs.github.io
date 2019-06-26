@@ -1,0 +1,14 @@
+- key: 32blit
+  class: blit
+- key: adafruit
+  class: adafruit
+- key: gamebuino
+  class: gamebuino
+- key: pewpewb
+  class: bigpewpew
+- key: pewpews
+  class: smallpewpew
+- key: pixel
+  class: pixelart
+- key: tontons
+  class: tontons

@@ -1,17 +1,173 @@
 // -------------------------------------------------------------------------
-// mise en forme du contenu rédactionnel
+// cartouche global d'un article
 // -------------------------------------------------------------------------
 
-.page {
+article.page {
     padding: 40px 60px;
     line-height: 1.75rem;
     text-align: justify;
     color: $page_text_color;
+
+    h1, h2, h3, h4, h5, h6 {
+        text-align: left;
+    }
 }
 
 @media screen and (max-width: 600px) {
-    .page {
+    article.page {
         padding: 20px 30px;
         line-height: 1.5rem;
+    }
+}
+
+// -------------------------------------------------------------------------
+// en-tête de l'article
+// -------------------------------------------------------------------------
+
+article.page header {
+    h1 {
+        margin-bottom: .25em;
+        font-family: 'Oswald', sans-serif;
+        font-size: 2rem;
+        line-height: 1.25em;
+        color: #000;
+    }
+    
+    h2 {
+        margin-bottom: .25em;
+        font-family: 'Roboto Condensed', sans-serif;
+        font-size: 1.5rem;
+        line-height: 1.25em;
+        color: #777;
+    }
+
+    .date {
+        color: #aaa;
+        text-shadow: 0 1px 0 #fff;
+    }
+}
+
+article.page .preamble {
+    margin: 2em 0;
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.75em;
+    color: #999;
+}
+
+@media screen and (max-width: 600px) {
+    article.page .preamble {
+        margin: 1em 0;
+        font-size: .9rem;
+    }
+}
+
+// -------------------------------------------------------------------------
+// corps de l'article
+// -------------------------------------------------------------------------
+
+article.page .body {
+
+    hr {
+        margin: 2rem 0 1.5rem 0;
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #fff;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        margin: 1.25em 0 .75em 0;
+        font-family: 'Roboto Condensed', sans-serif;
+        line-height: 1.25em;
+        color: #800;
+    }
+
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    ul {
+        margin: .5em 0 .5em 2em;
+        
+        li {
+            margin: .5em 0;
+            line-height: 1.75em;
+
+            &:first-child { margin-top: 0; }
+        }
+    }
+
+    p {
+        margin-bottom: .5em;
+    }
+
+    strong {
+        color: #222;
+    }
+}
+
+// -------------------------------------------------------------------------
+// tableaux
+// -------------------------------------------------------------------------
+
+article.page .body table:not(.rouge-table) {
+    $border_color: #888;
+
+    margin: 1em auto 1.5em auto;
+    border-collapse: collapse;
+    border-spacing: 0;
+    // border: 1px solid $border_color;
+    empty-cells: show;
+    background-color: $page_bgcolor;
+
+    thead {
+        vertical-align: bottom;
+        font-weight: bold;
+        color: #222;
+    }
+
+    tbody tr:nth-child(odd) { background-color: darken($page_bgcolor, 3); }
+    &.even tbody tr {
+        &:nth-child(odd) { background: none; }
+        &:nth-child(even) { background-color: darken($page_bgcolor, 3); }
+    }
+    &.nostrip tbody tr { background: none; }
+
+    th { border-top: 1px solid $border_color; }
+
+    th, td {
+        padding: .2em 1em;
+        border-bottom: 1px solid $border_color;
+    }
+}
+
+// -------------------------------------------------------------------------
+// blocs de code
+// -------------------------------------------------------------------------
+
+article.page .body {
+    pre, code {
+        font-family: 'Roboto Mono', sans-serif;
+    }
+
+    div.highlight, figure.highlight {
+        margin: 1.5em 0;
+        padding: .5em 1em;
+        overflow-x: scroll;
+
+        font-size: .8rem;
+        line-height: 1.75em;
+
+        border-radius: 8px;
+        border-bottom: 1px solid #fff;
+
+        .gutter {
+            padding-right: 1em;
+            text-align: right;
+            color: rgba(#fff, .2);
+        }
+    }
+
+    code.highlighter-rouge {
+        color: #068;
     }
 }

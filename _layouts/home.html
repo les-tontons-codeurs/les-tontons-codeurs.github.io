@@ -1,10 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
     <meta charset="utf-8">
-    <title>{{ site.title }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="language" content="FR">
+    <meta name="copyright" content="{{ site.title }}">
+    <meta name="subject" content="{{ site.subject }}">
+    <meta name="description" content="{% include site-description.html %}">
+
+    {% comment %}
+    -----------------------------------------------------------
+    Définition des mots-clefs
+    -----------------------------------------------------------
+    {% endcomment %}
+
+    {% assign keywords  = site.data.keywords %}
+    {% assign platforms = site.data.platforms | map: 'name' %}
+    {% assign languages = site.data.languages | map: 'name' %}
+    {% assign keywords  = keywords | concat: platforms | concat: languages %}
+
+    <meta name="keywords" content="{{ keywords | join: ', ' }}">
+
+    {% comment %}
+    -----------------------------------------------------------
+    Fin de définition des mots-clefs
+    -----------------------------------------------------------
+    {% endcomment %}
+
+    <title>{{ site.title }}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/styles.css">
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/home.css">
@@ -39,15 +63,19 @@
             -----------------------------------------------------------
             {% endcomment %}
 
-            <div class="heading">
-                <div class="container">
-                    <h1>Nos derniers bulletins</h1>
-                </div>
-            </div>
-                
-            {% include last-articles.html collection=site.posts %}
+            {% if site.posts != empty %}
 
-            <p class="center"><a class="button" href="#">Tous nos bulletins</a></p>
+                <div class="heading">
+                    <div class="container">
+                        <h1>Les news</h1>
+                    </div>
+                </div>
+                    
+                {% include last-articles.html collection=site.posts %}
+                
+                <p class="center"><a class="button" href="#">Tous nos bulletins</a></p>
+
+            {% endif %}
 
             {% comment %}
             -----------------------------------------------------------
@@ -55,15 +83,19 @@
             -----------------------------------------------------------
             {% endcomment %}
 
-            <div class="heading">
-                <div class="container">
-                    <h1>Nos derniers tutoriels</h1>
+            {% if site.guides != empty %}
+
+                <div class="heading">
+                    <div class="container">
+                        <h1>Nos derniers guides</h1>
+                    </div>
                 </div>
-            </div>
 
-            {% include last-articles.html collection=site.tutos %}
+                {% include last-articles.html collection=site.guides %}
 
-            <p class="center"><a class="button" href="#">Tous nos tutoriels</a></p>
+                <p class="center"><a class="button" href="#">Tous nos tutoriels</a></p>
+
+            {% endif %}
 
             {% comment %}
             -----------------------------------------------------------
