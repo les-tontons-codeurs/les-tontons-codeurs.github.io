@@ -36,7 +36,7 @@
         <li>
 
             {% if article.icon %}
-                <div class="icon {{ site.data.icon | where: 'key', article.icon | map: 'class' }}"></div>
+                <div class="icon {{ site.data.icons | where: 'key', article.icon | map: 'class' }}"></div>
             {% else %}
                 <div class="icon tontons"></div>
             {% endif %}

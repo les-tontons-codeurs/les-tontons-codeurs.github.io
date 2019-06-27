@@ -1,0 +1,44 @@
+---
+---
+
+// cette feuille de styles est spécifique au guide rédactionnel
+// qui est placé dans le répertoire `_drafts`
+
+.icons {
+    display: flex;
+    justify-content: space-between;
+    margin: 1.5em 0;
+
+    .named_icon {
+        display: grid;
+        grid-template-rows: 74px auto;
+        justify-items: center;
+        line-height: 1em;
+    }
+
+    .icon {
+        display: inline-block;
+        width: 64px;
+        height: 64px;
+        border-radius: 12px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        box-shadow: 0 2px 4px rgba(#000, .25);
+
+        &.adafruit    { background-image: url('../../icons/adafruit.svg');  }
+        &.blit        { background-image: url('../../icons/32blit.svg');    }
+        &.gamebuino   { background-image: url('../../icons/gamebuino.svg'); }
+        &.bigpewpew   { background-image: url('../../icons/big-pew-pew.svg');  }
+        &.smallpewpew { background-image: url('../../icons/small-pew-pew.svg');  }
+        &.pixelart    { background-image: url('../../icons/pixelart.svg');  }
+        &.tontons     { background-image: url('../../icons/les-tontons-codeurs.svg');  }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .icons {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 1.5em;
+    }
+}
