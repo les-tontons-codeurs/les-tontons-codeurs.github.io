@@ -1,0 +1,31 @@
+{% assign s = include.s | plus: 0 %}
+{% assign m = include.m | times: 60 %}
+{% assign h = include.h | times: 3600 %}
+{% assign t = h | plus: m | plus: s %}
+
+{% assign video = include.id %}
+{% if t > 0 %}
+    {% assign video = video | append: '?start=' | append: t %}
+{% endif %}
+
+{% assign iframe_class = '' %}
+{% if include.sharp == true %}
+    {% assign iframe_class = iframe_class | append: 'sharp,' %}
+{% endif %}
+{% if include.noshadow == true %}
+    {% assign iframe_class = iframe_class | append: 'noshadow,' %}
+{% endif %}
+
+{% assign class = 'youtube' %}
+{% assign w = include.w | plus: 0 %}
+{% if w > 0 %}
+    {% assign class = class | append: ' w-' | append: w %}
+{% endif %}
+
+<div class="{{ class }}">
+    {% if iframe_class == empty %}
+        <iframe src="https://www.youtube.com/embed/{{ video }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    {% else %}
+        <iframe class="{{ iframe_class | split: ',' | join: ' ' }}" src="https://www.youtube.com/embed/{{ video }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    {% endif %}
+</div>

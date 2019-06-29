@@ -1,0 +1,12 @@
+{% comment %}
+-----------------------------------------------------------
+Définition des variables globales
+-----------------------------------------------------------
+myassets: désigne le répertoire dans lequel sont hébergés
+          les actifs propres à chaque article de manière à
+          ce que l'auteur de l'article puisse y faire
+          référence facilement
+-----------------------------------------------------------
+{% endcomment %}
+
+{% capture myassets %}{{ site.baseurl }}/{{ site.article_assets }}/{{ page.slug }}{% endcapture %}

@@ -47,6 +47,25 @@
     }
 }
 
+.notfound {
+    margin-top: 60px;
+    padding-top: 200px;
+    min-width: 160px;
+    min-height: 160px;
+    background-image: url('../images/emoji-confused.png');
+    background-size: 160px;
+    background-position: top center;
+    background-repeat: no-repeat;
+
+    font-family: 'Roboto Condensed', sans-serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    line-height: 1.25em;
+    text-align: center;
+    text-shadow: 0 1px 0 #fff;
+    color: #bbb;
+}
+
 .heading {
     $height: 160px;
 
@@ -196,6 +215,13 @@
     .topheading {
         h1.title { font-size: 2rem; }
         h2.subtitle { font-size: 1.1rem; }
+    }
+
+    .notfound {
+        margin-top: 40px;
+        padding-top: 100px;
+        background-size: 80px;
+        font-size: 1.1rem;
     }
 
     .heading {

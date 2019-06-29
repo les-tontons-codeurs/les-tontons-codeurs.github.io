@@ -84,11 +84,20 @@ article.page .body {
         color: #800;
     }
 
-    h1 {
-        font-size: 1.75rem;
-    }
+    h1 { font-size: 1.75rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.25rem; }
+    h4 { font-size: 1.25rem; color: #000; }
+    h5 { font-size: 1.125rem; color: #000; }
+    h6 { font-size: 1rem; font-weight: bold; color: #000; }
 
-    ul {
+    h1 + h2,
+    h2 + h3,
+    h3 + h4,
+    h4 + h5,
+    h5 + h6 { margin-top: 0; }
+
+    ul, ol {
         margin: .5em 0 .5em 2em;
         
         li {
@@ -112,17 +121,85 @@ article.page .body {
         }
     }
 
-    strong {
-        color: #222;
-    }
+    strong { color: #222; }
+
+    // --------------
+    // helper classes
+    // --------------
+    // .center { text-align: center; } (défini dans _layout.scss)
+    .discrete { color: lighten($page_text_color, 30); }
+    .inlaid   { text-shadow: 0 1px 0 #fff; }
 }
 
 // -------------------------------------------------------------------------
-// modification de l'occupation de l'espace horizontal
+// contenus multimedia
 // -------------------------------------------------------------------------
 
-.w-50 { width: 50%; }
-.w-75 { width: 75%; }
+article.page .body img {
+    display: block;
+    margin: 1.5em auto;
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(#000, .3);
+
+    &.sharp {
+        border-radius: 0;
+    }
+
+    &.noshadow {
+        box-shadow: none;
+    }
+}
+
+article.page .body .youtube {
+    position: relative;
+    height: 0;
+    margin: 1.5em auto;
+    padding-bottom: 56.25%;
+
+    &.w-50 {
+        width: 50%;
+        padding-bottom: 28%;
+    }
+
+    &.w-75 {
+        width: 75%;
+        padding-bottom: 42%;
+    }
+    
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(#000, .3);
+
+        &.sharp {
+            border-radius: 0;
+        }
+
+        &.noshadow {
+            box-shadow: none;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    article.page .body img {
+        &.w-50, &.w-75 {
+            width: 100%;
+        }
+    }
+    article.page .body .youtube {
+        &.w-50, &.w-75 {
+            width: 100%;
+            padding-bottom: 56.25%;
+        }
+    }
+}
 
 // -------------------------------------------------------------------------
 // note importante
@@ -138,6 +215,13 @@ article.page .body blockquote {
     border-bottom: 1px solid #fff;
     box-shadow: inset 0 1px 4px rgba(darken($color, 40), .5);
 }
+
+// -------------------------------------------------------------------------
+// modification de l'occupation de l'espace horizontal
+// -------------------------------------------------------------------------
+
+.w-50 { width: 50%; }
+.w-75 { width: 75%; }
 
 // -------------------------------------------------------------------------
 // encadrement des blocs susceptibles de déborder sur plateformes mobiles
@@ -173,7 +257,7 @@ article.page .body table:not(.rouge-table) {
     background-color: $page_bgcolor;
 
     thead {
-        vertical-align: bottom;
+        // vertical-align: bottom;
         font-weight: bold;
         color: #222;
     }
@@ -190,6 +274,14 @@ article.page .body table:not(.rouge-table) {
     th, td {
         padding: .2em 1em;
         border-bottom: 1px solid $border_color;
+    }
+
+    &.noline {
+        th, td { border: none; }
+    }
+    
+    &.nowrap {
+        th, td { white-space: nowrap; }
     }
 }
 

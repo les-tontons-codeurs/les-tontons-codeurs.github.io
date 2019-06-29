@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="language" content="FR">
+    <meta name="copyright" content="{{ site.title }}">
+    <meta name="subject" content="{{ site.subject }}">
+    <meta name="description" content="{% include site-description.html %}">
+
+    {% comment %}
+    -----------------------------------------------------------
+    Définition des mots-clefs
+    -----------------------------------------------------------
+    {% endcomment %}
+
+    {% assign keywords  = site.data.keywords %}
+    {% assign platforms = site.data.platforms | map: 'name' %}
+    {% assign languages = site.data.languages | map: 'name' %}
+    {% assign keywords  = keywords | concat: platforms | concat: languages %}
+
+    <meta name="keywords" content="{{ keywords | join: ', ' }}">
+
+    {% comment %}
+    -----------------------------------------------------------
+    Fin de définition des mots-clefs
+    -----------------------------------------------------------
+    {% endcomment %}
+
+    <title>{{ site.title }}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/styles.css">
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/home.css">
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/single.css">
+    {% include favicons.html %}
+</head>
+
+<body>
+
+    {% include navigation.html %}
+    
+    <div class="wrapper">
+        
+        {% include home-header.html %}
+
+        <main class="page">
+
+            {% comment %}
+            -----------------------------------------------------------
+            L'en-tête de la page
+            -----------------------------------------------------------
+            {% endcomment %}
+
+            <div class="topheading">
+                <h1 class="title">{{ site.title }}</h1>
+                <h2 class="subtitle">Nous partageons avec vous nos expérimentations et réalisations</h2>
+            </div>
+
+            {% comment %}
+            -----------------------------------------------------------
+            Le contenu de la page
+            -----------------------------------------------------------
+            {% endcomment %}
+
+            <div class="notfound">
+                mmmh... on dirait que<br />
+                cette page n'existe pas sur le site
+            </div>
+            
+            <!-- <img src="{{ site.baseurl }}/assets/images/emoji-confused.png" /> -->
+
+        </main>
+
+    </div>
+    
+    {% include footer.html %}
+
+</body>
+
+</html>

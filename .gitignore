@@ -1,6 +1,7 @@
 .DS_Store
-.sass-cache
 .jekyll-metadata
+.htaccess
+.sass-cache
 .vscode
 _artwork
 _site

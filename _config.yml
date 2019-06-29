@@ -3,6 +3,8 @@ brand: les tontons cod[3]urs
 subject: Expérimentations ludiques sur microcontrôleurs
 copyright: 2018
 
+article_assets: article-assets
+
 collections:
   guides:
     output: true
@@ -20,7 +22,7 @@ defaults:
 
 permalink: pretty
 
-# excerpt_separator: "<!--more-->"
+excerpt_separator: "<!--more-->"
 
 highlighter: rouge
 

@@ -47,7 +47,8 @@
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/article.css">
     
     {% if page.styled == true %}
-        <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/styled-articles/{{ page.slug }}.css">
+        {% include myassets.html %}
+        <link rel="stylesheet" href="{{ myassets }}/css/styles.css">
     {% endif %}
 
     {% include favicons.html %}
