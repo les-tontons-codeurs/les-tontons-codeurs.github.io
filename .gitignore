@@ -1,8 +1,19 @@
+# macOS
 .DS_Store
+._*
+
+# Jekyll
+.jekyll-cache
 .jekyll-metadata
-.htaccess
 .sass-cache
-.vscode
-_artwork
 _site
+
+# Apache
+.htaccess
+
+# Visual Studio Code
+.vscode
+
+# Working directories
+_artwork
 _tmp

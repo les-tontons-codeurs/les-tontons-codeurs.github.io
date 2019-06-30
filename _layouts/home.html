@@ -73,7 +73,12 @@
                     
                 {% include last-articles.html collection=site.posts %}
                 
-                <p class="center"><a class="button" href="#">Tous nos bulletins</a></p>
+                {% comment %}
+                -----------------------------------------------------------
+                désactivation du bouton pour le moment
+                <p class="centered"><a class="button" href="#">Tous nos bulletins</a></p>
+                -----------------------------------------------------------
+                {% endcomment %}
 
             {% endif %}
 
@@ -93,7 +98,12 @@
 
                 {% include last-articles.html collection=site.guides %}
 
-                <p class="center"><a class="button" href="#">Tous nos tutoriels</a></p>
+                {% comment %}
+                -----------------------------------------------------------
+                désactivation du bouton pour le moment
+                <p class="centered"><a class="button" href="#">Tous nos tutoriels</a></p>
+                -----------------------------------------------------------
+                {% endcomment %}
 
             {% endif %}
 

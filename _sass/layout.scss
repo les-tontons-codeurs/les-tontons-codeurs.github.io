@@ -17,7 +17,7 @@ a {
     text-decoration: none;
 }
 
-.center {
+.centered {
     text-align: center;
 }
 
@@ -27,6 +27,7 @@ a {
 
 html {
     background-color: #141b1f;
+    scroll-padding-top: $topbar_height;
 }
 
 body {
@@ -48,6 +49,10 @@ body {
 }
 
 @media screen and (max-width: 600px) {
+    html {
+        scroll-padding-top: none;
+    }
+
     body {
         font-size: 10pt;
     }

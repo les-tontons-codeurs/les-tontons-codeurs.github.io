@@ -4,7 +4,7 @@
 // cette feuille de styles est spécifique au guide rédactionnel
 // qui est placé dans le répertoire `_drafts`
 
-.icons {
+article.page .body .icons {
     display: flex;
     justify-content: space-between;
     margin: 1.5em 0;
@@ -36,7 +36,7 @@
 }
 
 @media screen and (max-width: 600px) {
-    .icons {
+    article.page .body .icons {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         grid-gap: 1.5em;

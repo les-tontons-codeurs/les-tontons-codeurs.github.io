@@ -1,0 +1,19 @@
+{% comment %}
+-----------------------------------------------------------
+Intégration d'une démo sur console
+-----------------------------------------------------------
+Cette macro accepte deux paramètres :
+    console = gamebuino | pygamer
+    screen  = le chemin d'accès à l'image qui doit être affichée à l'écran
+
+Exemple:
+    {% assign asset = site.baseurl | append: '/assets/images/demo-gamebuino-320x256.gif' %}
+    {% include demo.html console='gamebuino' screen=asset %}
+-----------------------------------------------------------
+{% endcomment %}
+
+<div class="{{ include.console }}">
+    <div class="console">
+        <div class="screen" style="background-image:url('{{ include.screen }}')"></div>
+    </div>
+</div>

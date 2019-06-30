@@ -82,9 +82,10 @@ article.page .body {
         font-family: 'Roboto Condensed', sans-serif;
         line-height: 1.25em;
         color: #800;
+        // border-bottom: 1px solid #800;
     }
 
-    h1 { font-size: 1.75rem; }
+    h1 { font-size: 1.75rem; border-bottom: 1px solid #800; }
     h2 { font-size: 1.5rem; }
     h3 { font-size: 1.25rem; }
     h4 { font-size: 1.25rem; color: #000; }
@@ -126,7 +127,7 @@ article.page .body {
     // --------------
     // helper classes
     // --------------
-    // .center { text-align: center; } (défini dans _layout.scss)
+    .center   { text-align: center; }
     .discrete { color: lighten($page_text_color, 30); }
     .inlaid   { text-shadow: 0 1px 0 #fff; }
 }
@@ -142,13 +143,9 @@ article.page .body img {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(#000, .3);
 
-    &.sharp {
-        border-radius: 0;
-    }
-
-    &.noshadow {
-        box-shadow: none;
-    }
+    // helpers
+    &.sharp    { border-radius: 0; }
+    &.noshadow { box-shadow: none; }
 }
 
 article.page .body .youtube {
@@ -157,11 +154,13 @@ article.page .body .youtube {
     margin: 1.5em auto;
     padding-bottom: 56.25%;
 
+    // helper
     &.w-50 {
         width: 50%;
         padding-bottom: 28%;
     }
-
+    
+    // helper
     &.w-75 {
         width: 75%;
         padding-bottom: 42%;
@@ -189,11 +188,14 @@ article.page .body .youtube {
 
 @media screen and (max-width: 600px) {
     article.page .body img {
+        // helper
         &.w-50, &.w-75 {
             width: 100%;
         }
     }
+
     article.page .body .youtube {
+        // helper
         &.w-50, &.w-75 {
             width: 100%;
             padding-bottom: 56.25%;
@@ -220,6 +222,7 @@ article.page .body blockquote {
 // modification de l'occupation de l'espace horizontal
 // -------------------------------------------------------------------------
 
+// helpers
 .w-50 { width: 50%; }
 .w-75 { width: 75%; }
 
@@ -238,6 +241,7 @@ article.page .body blockquote {
 // !!! Notez bien les sauts de lignes avant et après le contenu Markdown !!!
 // -------------------------------------------------------------------------
 
+// helper
 article.page .body .scrollable {
     overflow-x: auto;
 }
@@ -280,6 +284,7 @@ article.page .body table:not(.rouge-table) {
         th, td { border: none; }
     }
     
+    // helper
     &.nowrap {
         th, td { white-space: nowrap; }
     }

@@ -90,7 +90,7 @@ Vous pouvez examiner le contenu actuel du répertoire `article-assets` pour voir
 
 > **Remarque importante**
 > 
-> Lorsque vous aurez besoin de faire référence à ces ressources dans votre article, vous devrez en spécifier le chemin. Pour cela, j'ai défini une variable `myassets` à utiliser **systématiquement** pour faire référence au répertoire de ressources de **votre** article. Pour charger la définition de cette variable dans le scope de votre article, vous devez ajouter la directive Liquid suivante en début de fichier, juste après le préambule :
+> Lorsque vous aurez besoin de faire référence à ces ressources locales, vous devrez en spécifier le chemin. Pour cela, j'ai défini une variable `myassets` à utiliser **systématiquement** pour faire référence au répertoire de ressources de **votre** article. Pour charger la définition de cette variable dans le scope de votre article, vous devez ajouter la directive Liquid suivante en début de fichier, juste après le préambule :
 > 
 > 
 > ```liquid
@@ -197,6 +197,7 @@ Les métadonnées définies dans le préambule correspondent à la liste des pro
 | `languages` | langages concernés              | normalisée    |                              | <i class="fas fa-check"></i> |
 | `tags`      | mots-clés principaux            | libre         |                              | <i class="fas fa-check"></i> |
 | `styled`    | feuille de styles personnalisés | true \| false |                              |                              |
+{: .nowrap }
 
 </div>
 
@@ -225,7 +226,7 @@ Voici un exemple de préambule pour se fixer les idées :
 
 ```yaml
 ---
-title: Comparatif de la Gamebuino META, du PyGamer et de la 32blit
+title: Comparatif de la Gamebuino META, de la PyGamer et de la 32blit
 subtitle: Des consoles de Retro-Gaming pour apprendre la programmation
 author: titi
 date: 2019-07-01
@@ -494,7 +495,7 @@ Mais vous pouvez utiliser quelques *helpers* pour en modifier le rendu.
 
 **Rendre le tableau responsive :**{: style="color:#a00" }
 
-Les tableaux font partie des éléments HTML les plus chiants à gérer lorsqu'on se penche sur les aspects **responsive**. Et sur un smartphone, il y a de fortes chances que votre tableau ne rentre pas dans le cadre de la page... Aussi, pour ne pas déstructurer la mise en page, j'ai prévu un petit *helper* `scrollable` chargé d'encapsuler les éléments qui peuvent poser problème dans un contexte responsive, comme les tableaux. Il est **vivement recommandé** (pour ne pas dire **obligatoire**) d'utiliser cette précaution. Elle permet d'éviter un débordement en plaçant le tableau à l'intérieur d'un bloc à défilement horizontal. Un autre *helper* `nowrap` peut lui être associé pour empêcher la césure automatique impliquant des passage à la ligne dans un tableau.
+Les tableaux font partie des éléments HTML les plus chiants à gérer lorsqu'on se penche sur les aspects **responsive**. Et sur un smartphone, il y a de fortes chances pour que votre tableau ne rentre pas dans le cadre de la page... Aussi, pour ne pas déstructurer la mise en page, j'ai prévu un petit *helper* `scrollable` chargé d'encapsuler les éléments qui peuvent poser problème dans un contexte responsive, comme les tableaux. Il est **vivement recommandé** (pour ne pas dire **obligatoire**) d'utiliser cette précaution. Elle permet d'éviter un débordement en plaçant le tableau à l'intérieur d'un bloc à défilement horizontal. Un autre *helper* `nowrap` peut lui être associé pour empêcher la césure automatique impliquant des passage à la ligne dans un tableau.
 
 ```md
 <div class="scrollable" markdown="1">
@@ -675,7 +676,12 @@ Après quoi je peux facilement intégrer mon image de cette façon :
 
 ## Le lecteur vidéo de YouTube
 
-Il n'existe pas de directive Markdown pour intégrer facilement des vidéos comme elles peuvent exister pour les images. J'ai donc prévu une petite macro dans le template, chargée d'intégrer pour vous les élements HTML nécessaires à l'affichage du lecteur vidéo de YouTube.
+Il n'existe pas de directive Markdown pour intégrer facilement des vidéos comme elles peuvent exister pour les images. J'ai donc prévu une petite macro dans le template, chargée d'intégrer pour vous les élements HTML nécessaires à l'affichage du lecteur vidéo de YouTube. Cette macro attend les propriétés suivantes :
+
+- `id`, dont la valeur correspond à l'identifiant YouTube de la vidéo,
+- `w`, dont la valeur peut être **50** ou **75** et permet d'appliquer la classe CSS `w-50` ou `w-75` sur le lecteur.
+
+Si la propriété `w` n'est pas spécifiée, le lecteur vidéo occupera 100% de la largeur disponible.
 
 ```liquid
 {{ '{% include youtube.html id="QfsUnN-C3vI" w=75' }} %}
@@ -695,33 +701,95 @@ Vous pouvez également spécifier l'instant à partir duquel doit démarrer la v
 
 {% include youtube.html id="AIL4qi5UIQE" w=75 m=4 s=59 %}
 
-Les même règles d'habillage que pour les images peuvent s'appliquer également au lecteur vidéo de YouTube.
+Les mêmes règles d'habillage que pour les images peuvent s'appliquer également au lecteur vidéo de YouTube.
 
 
-# Les helper-classes
+## Les consoles
+
+Lorsque vous aurez besoin d'intégrer une démo qui tourne sur console dans vos articles, vous pourrez vous appuyer sur la macro `demo.html`, qu'il suffira d'inclure à l'emplacement où vous souhaitez intégrer la démo, en y injectant les paramètres adéquats.
+
+### La Gamebuino META
+
+Supposons que l'on souhaite afficher la démo du jeu de la vie qui est visible en page d'accueil. Voilà comment appliquer la macro `demo.html` :
+
+```liquid
+{{ '{% assign asset = site.baseurl | append: "/assets/images/demo-gamebuino-320x256.gif"' }} %}
+{{ '{% include demo.html console="gamebuino" screen=asset' }} %}
+```
+
+Ici on est obligé de précalculer une variable `asset` qui va permettre de désigner le chemin d'accès à l'image que l'on souhaite afficher à l'écran, car Jekyll ne permet pas de passer une expression comme paramètre lors d'un `include`.
+
+{% assign asset = site.baseurl | append: "/assets/images/demo-gamebuino-320x256.gif" %}
+{% include demo.html console="gamebuino" screen=asset %}
+
+Dans cet exemple on est allé chercher une image dans le répertoire des ressources globales de construction du site :
+
+```
+assets
+`-- images
+    `-- demo-gamebuino-320x256.gif
+```
+
+Mais vous pouvez tout à fait faire la même chose avec une ressource propre à votre article. Par exemple, si je souhaite afficher l'image suivante, qui est située dans le répertoire des ressources de mon article :
+
+```
+article-assets
+`-- authoring-guide
+    `-- css
+        `-- images
+            `-- sweet-valentine-320x256.gif
+```
+
+Il me suffit d'invoquer la macro `demo.html` de cette façon :
+
+```liquid
+{{ '{% assign asset = myassets | append: "/images/sweet-valentine-320x256.gif"' }} %}
+{{ '{% include demo.html console="gamebuino" screen=asset' }} %}
+```
+
+{% assign asset = myassets | append: "/images/sweet-valentine-320x256.gif" %}
+{% include demo.html console="gamebuino" screen=asset %}
+
+### La PyGamer
+
+Pour la PyGamer, c'est pareil, à la différence près qu'il faut spécifier `console="pygamer"` :
+
+```liquid
+{{ '{% assign asset = site.baseurl | append: "/assets/images/demo-pygamer-320x256.gif"' }} %}
+{{ '{% include demo.html console="pygamer" screen=asset' }} %}
+```
+
+{% assign asset = site.baseurl | append: "/assets/images/demo-pygamer-320x256.gif" %}
+{% include demo.html console="pygamer" screen=asset %}
+
+> **Remarque**
+> 
+> Les images de démo pour la Gamebuino et la PyGamer doivent respecter le ratio des dimensions de leur écran, qui mesure **160x128** px. Les images que j'utilise ici mesurent **320x256** px. Elles respectent donc le ratio imposé, et j'ai volontairement intégré des images à une échelle **2:1** de manière à augmenter la densité de points et obtenir un meilleur rendu, avec plus de finesse, dans le navigateur. Aussi, je vous encourage à appliquer la même règle dans vos articles  <i class="far fa-smile-wink"></i>
+
+## Les helper-classes
 
 `.discrete`
 
-Vous permet de diminuer le contraste d'un texte pour le rendre plus discret
+Vous permet de diminuer le contraste d'un texte pour le rendre plus discret.
 {: .discrete}
 
 `.inlaid`
 
-Vous permet de donner un effet très léger d'incrustation à un élément HTML
+Vous permet de donner un effet très léger d'incrustation à un élément HTML.
 {: .inlaid }
 
 `.center`
 
-Vous permet de centrer l'élément HTML
+Vous permet de centrer l'élément HTML.
 {: .center }
 
 `.w-50`
 
-Vous permet de contraindre l'élément HTML à n'occuper que 50% de la largeur disponible
+Vous permet de contraindre l'élément HTML à n'occuper que 50% de la largeur disponible.
 
 `.w-75`
 
-Vous permet de contraindre l'élément HTML à n'occuper que 75% de la largeur disponible
+Vous permet de contraindre l'élément HTML à n'occuper que 75% de la largeur disponible.
 
 `.sharp`
 
@@ -733,7 +801,7 @@ Vous permet de supprimer l'effet d'ombre portée sur les éléments multimedia.
 
 `.nowrap`
 
-Vous permet de forcer un tableau à ne pas appliquer de césure automatique de passage à la ligne
+Vous permet de forcer un tableau à ne pas appliquer de césure automatique de passage à la ligne.
 
 `.scrollable`
 
