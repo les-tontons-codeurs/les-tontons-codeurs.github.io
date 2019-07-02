@@ -148,6 +148,27 @@ article.page .body img {
     &.noshadow { box-shadow: none; }
 }
 
+article.page .body .multicolum {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1em 2em;
+    justify-items: center;
+
+    &.c-3 { grid-template-columns: 1fr 1fr 1fr; }
+    &.c-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+
+    &.middle { align-items: center; }
+    &.bottom { align-items: end; }
+    
+    margin: 1.5em auto;
+
+    img {
+        margin: 0;
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
 article.page .body .youtube {
     position: relative;
     height: 0;

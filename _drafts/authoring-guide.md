@@ -552,7 +552,7 @@ Pour intégrer des images à vos articles, rien de plus simple... Markdown dispo
 
 permettra d'intégrer l'image sous cette forme :
 
-![La console PyGamer][adafruit-pygamer]
+![La console PyGamer][pygamer1]
 
 Le template redimensionnera automatiquement l'image pour qu'elle occupe au mieux l'espace disponible dans le corps de la page. Par ailleurs, une mise en forme est appliquée par défaut à l'image pour arrondir ses coins et lui ajouter une ombre portée.
 
@@ -581,7 +581,7 @@ Par exemple :
 ![La console PyGamer][pygamer]{: .w-50 }
 ```
 
-![La console PyGamer][adafruit-pygamer]{: .w-50 }
+![La console PyGamer][pygamer1]{: .w-50 }
 
 **Soit en spécifiant directement les dimensions de l'image :**
 
@@ -591,7 +591,7 @@ Vous pouvez également contraindre la largeur et/ou la hauteur en pixels. Par ex
 ![La console PyGamer][pygamer]{: width="300" }
 ```
 
-![La console PyGamer][adafruit-pygamer]{: width="300" }
+![La console PyGamer][pygamer1]{: width="300" }
 
 Attention toutefois à respecter le ratio original de l'image si vous spécifiez la largeur **et** la hauteur... Sinon vous risquez de déformer l'image :
 
@@ -599,7 +599,7 @@ Attention toutefois à respecter le ratio original de l'image si vous spécifiez
 ![La console PyGamer][pygamer]{: width="500" height="200" }
 ```
 
-![La console PyGamer][adafruit-pygamer]{: width="500" height="200" }
+![La console PyGamer][pygamer1]{: width="500" height="200" }
 
 > **Remarque**
 > 
@@ -618,7 +618,7 @@ Par exemple :
 ![La console PyGamer][pygamer]{: width="300" .sharp .noshadow }
 ```
 
-![La console PyGamer][adafruit-pygamer]{: width="300" .sharp .noshadow }
+![La console PyGamer][pygamer1]{: width="300" .sharp .noshadow }
 
 Vous pouvez même appliquer des transformations géométriques à l'image :
 
@@ -626,7 +626,7 @@ Vous pouvez même appliquer des transformations géométriques à l'image :
 ![La console PyGamer][pygamer]{: width="300" style="transform: rotate(-15deg);" }
 ```
 
-![La console PyGamer][adafruit-pygamer]{: width="300" style="transform: rotate(-15deg);" }
+![La console PyGamer][pygamer1]{: width="300" style="transform: rotate(-15deg);" }
 
 Vous voyez que dans ce cas, la transformation est appliquée *in situ* sans affecter les autres composants environnants, ce qui peut entraîner des chevauchements non souhaitables. Dans ce cas, je vous conseille d'encapsuler l'image dans un wrapper HTML pour dégager des marges suffisantes autour de l'image :
 
@@ -640,7 +640,7 @@ Vous voyez que dans ce cas, la transformation est appliquée *in situ* sans affe
 ```
 
 <div markdown="1" style="margin:50px auto">
-![La console PyGamer][adafruit-pygamer]{: width="300" style="transform: rotate(-15deg);" }
+![La console PyGamer][pygamer1]{: width="300" style="transform: rotate(-15deg);" }
 </div>
 
 ### Intégrer des images locales
@@ -667,7 +667,6 @@ Après quoi je peux facilement intégrer mon image de cette façon :
 ```
 
 ![La console 32blit]({{ myassets }}/images/32blit.jpg){: .w-50 }
-
 
 ## Le lecteur vidéo HTML
 
@@ -766,6 +765,355 @@ Pour la PyGamer, c'est pareil, à la différence près qu'il faut spécifier `co
 > 
 > Les images de démo pour la Gamebuino et la PyGamer doivent respecter le ratio des dimensions de leur écran, qui mesure **160x128** px. Les images que j'utilise ici mesurent **320x256** px. Elles respectent donc le ratio imposé, et j'ai volontairement intégré des images à une échelle **2:1** de manière à augmenter la densité de points et obtenir un meilleur rendu, avec plus de finesse, dans le navigateur. Aussi, je vous encourage à appliquer la même règle dans vos articles  <i class="far fa-smile-wink"></i>
 
+
+## Appliquer un multicolonnage
+
+Vous pouvez délimiter une section de votre article pour lui appliquer une mise en forme qui s'étende sur 2, 3 ou 4 colonnes selon vos besoins. Markdown ne permet pas d'appliquer ce genre de mise en forme. Vous aurez donc recours à un balisage HTML pour pouvoir en profiter :
+
+```md
+<div class="multicolum" markdown="1">
+    <!-- votre contenu sur 2 colonnes -->
+</div>
+
+<div class="multicolum c-3" markdown="1">
+    <!-- votre contenu sur 3 colonnes -->
+</div>
+
+<div class="multicolum c-4" markdown="1">
+    <!-- votre contenu sur 4 colonnes -->
+</div>
+```
+
+Le multicolonnage s'effectuera sur 2 colonnes par défaut, et vous pourrez augmenter le nombre de colonnes avec les *helpers* `c-3` et `c-4` pour passer respectivement sur 3 ou 4 colonnes.
+
+Vous noterez la présence de l'attribut `markdown="1"` qui indique que tout ce qui se trouve dans le bloc délimiteur devra être interprété normalement par Kramdown.
+
+### La grille d'alternance
+
+Commençons par un exemple simple pour apposer 2 paragraphes sur 2 colonnes :
+
+```md
+<div class="multicolum" markdown="1">
+Phasellus lobortis eget tellus in gravida. Etiam fermentum massa commodo leo ullamcorper, vitae porttitor turpis eleifend. Nullam tincidunt diam sit amet pretium rhoncus. Vivamus id lorem augue. In fringilla efficitur ante id auctor. Donec auctor nisi sit amet est porttitor vestibulum. Integer volutpat, nisl sit amet euismod malesuada, justo diam ornare est, nec vestibulum risus massa at ligula.
+
+Integer eros arcu, vehicula ac luctus id, faucibus ac nibh. Nulla facilisi. Vivamus in interdum neque, at sodales lorem. Suspendisse et diam eu enim vehicula fringilla. Sed luctus dignissim mi, id pretium ante aliquam id. In eget nisl sit amet neque vestibulum maximus.
+</div>
+```
+
+Vous obtiendrez le rendu suivant :
+
+<div class="multicolum" markdown="1">
+Phasellus lobortis eget tellus in gravida. Etiam fermentum massa commodo leo ullamcorper, vitae porttitor turpis eleifend. Nullam tincidunt diam sit amet pretium rhoncus. Vivamus id lorem augue. In fringilla efficitur ante id auctor. Donec auctor nisi sit amet est porttitor vestibulum. Integer volutpat, nisl sit amet euismod malesuada, justo diam ornare est, nec vestibulum risus massa at ligula.
+
+Integer eros arcu, vehicula ac luctus id, faucibus ac nibh. Nulla facilisi. Vivamus in interdum neque, at sodales lorem. Suspendisse et diam eu enim vehicula fringilla. Sed luctus dignissim mi, id pretium ante aliquam id. In eget nisl sit amet neque vestibulum maximus.
+</div>
+
+Jusque là, rien de compliqué... ajoutons maintenant un troisième paragraphe :
+
+```md
+<div class="multicolum" markdown="1">
+Phasellus lobortis eget tellus in gravida. Etiam fermentum massa commodo leo ullamcorper, vitae porttitor turpis eleifend. Nullam tincidunt diam sit amet pretium rhoncus. Vivamus id lorem augue. In fringilla efficitur ante id auctor. Donec auctor nisi sit amet est porttitor vestibulum. Integer volutpat, nisl sit amet euismod malesuada, justo diam ornare est, nec vestibulum risus massa at ligula.
+
+Integer eros arcu, vehicula ac luctus id, faucibus ac nibh. Nulla facilisi. Vivamus in interdum neque, at sodales lorem. Suspendisse et diam eu enim vehicula fringilla. Sed luctus dignissim mi, id pretium ante aliquam id. In eget nisl sit amet neque vestibulum maximus.
+
+Vestibulum tellus nibh, dignissim non vehicula non, dignissim at massa. Maecenas sit amet nunc a felis dictum finibus. Proin gravida justo non dictum blandit. Integer fringilla dui vel ante vehicula congue. Duis venenatis dui sed sollicitudin lobortis. Donec metus ex, ornare a dui eget, pretium molestie quam. Vivamus efficitur ipsum a mollis cursus. Integer placerat nibh odio, sed porta nulla fringilla at.
+</div>
+```
+
+<div class="multicolum" markdown="1">
+Phasellus lobortis eget tellus in gravida. Etiam fermentum massa commodo leo ullamcorper, vitae porttitor turpis eleifend. Nullam tincidunt diam sit amet pretium rhoncus. Vivamus id lorem augue. In fringilla efficitur ante id auctor. Donec auctor nisi sit amet est porttitor vestibulum. Integer volutpat, nisl sit amet euismod malesuada, justo diam ornare est, nec vestibulum risus massa at ligula.
+
+Integer eros arcu, vehicula ac luctus id, faucibus ac nibh. Nulla facilisi. Vivamus in interdum neque, at sodales lorem. Suspendisse et diam eu enim vehicula fringilla. Sed luctus dignissim mi, id pretium ante aliquam id. In eget nisl sit amet neque vestibulum maximus.
+
+Vestibulum tellus nibh, dignissim non vehicula non, dignissim at massa. Maecenas sit amet nunc a felis dictum finibus. Proin gravida justo non dictum blandit. Integer fringilla dui vel ante vehicula congue. Duis venenatis dui sed sollicitudin lobortis. Donec metus ex, ornare a dui eget, pretium molestie quam. Vivamus efficitur ipsum a mollis cursus. Integer placerat nibh odio, sed porta nulla fringilla at.
+</div>
+
+Vous voyez que l'enchaînement des élements s'effectue dans l'ordre de positionnement des paragraphes, **sur une grille** de 2 colonnes, en alternant les paragraphes d'une colonnes à l'autre.
+
+```
+1
+                1    2
+2       =>
+                3
+3
+```
+
+L'ajout d'un 4e paragraphe suivra la même logique d'enchaînement :
+
+```md
+<div class="multicolum" markdown="1">
+Phasellus lobortis eget tellus in gravida. Etiam fermentum massa commodo leo ullamcorper, vitae porttitor turpis eleifend. Nullam tincidunt diam sit amet pretium rhoncus. Vivamus id lorem augue. In fringilla efficitur ante id auctor. Donec auctor nisi sit amet est porttitor vestibulum. Integer volutpat, nisl sit amet euismod malesuada, justo diam ornare est, nec vestibulum risus massa at ligula.
+
+Integer eros arcu, vehicula ac luctus id, faucibus ac nibh. Nulla facilisi. Vivamus in interdum neque, at sodales lorem. Suspendisse et diam eu enim vehicula fringilla. Sed luctus dignissim mi, id pretium ante aliquam id. In eget nisl sit amet neque vestibulum maximus.
+
+Vestibulum tellus nibh, dignissim non vehicula non, dignissim at massa. Maecenas sit amet nunc a felis dictum finibus. Proin gravida justo non dictum blandit. Integer fringilla dui vel ante vehicula congue. Duis venenatis dui sed sollicitudin lobortis. Donec metus ex, ornare a dui eget, pretium molestie quam. Vivamus efficitur ipsum a mollis cursus. Integer placerat nibh odio, sed porta nulla fringilla at.
+
+Donec a risus quis nunc lobortis vehicula. Phasellus malesuada sit amet lectus et porta. Nunc rutrum lobortis ante, non tristique magna rhoncus ac. Fusce tincidunt orci aliquet nunc posuere fringilla. In facilisis at neque vel sagittis. Vivamus ultrices ipsum egestas turpis laoreet vulputate. Maecenas rhoncus molestie consequat. Aenean bibendum sem urna, cursus iaculis magna venenatis nec. Duis rutrum tellus a diam maximus, volutpat aliquet metus tincidunt. Praesent eget nulla lacus.
+</div>
+```
+
+<div class="multicolum" markdown="1">
+Phasellus lobortis eget tellus in gravida. Etiam fermentum massa commodo leo ullamcorper, vitae porttitor turpis eleifend. Nullam tincidunt diam sit amet pretium rhoncus. Vivamus id lorem augue. In fringilla efficitur ante id auctor. Donec auctor nisi sit amet est porttitor vestibulum. Integer volutpat, nisl sit amet euismod malesuada, justo diam ornare est, nec vestibulum risus massa at ligula.
+
+Integer eros arcu, vehicula ac luctus id, faucibus ac nibh. Nulla facilisi. Vivamus in interdum neque, at sodales lorem. Suspendisse et diam eu enim vehicula fringilla. Sed luctus dignissim mi, id pretium ante aliquam id. In eget nisl sit amet neque vestibulum maximus.
+
+Vestibulum tellus nibh, dignissim non vehicula non, dignissim at massa. Maecenas sit amet nunc a felis dictum finibus. Proin gravida justo non dictum blandit. Integer fringilla dui vel ante vehicula congue. Duis venenatis dui sed sollicitudin lobortis. Donec metus ex, ornare a dui eget, pretium molestie quam. Vivamus efficitur ipsum a mollis cursus. Integer placerat nibh odio, sed porta nulla fringilla at.
+
+Donec a risus quis nunc lobortis vehicula. Phasellus malesuada sit amet lectus et porta. Nunc rutrum lobortis ante, non tristique magna rhoncus ac. Fusce tincidunt orci aliquet nunc posuere fringilla. In facilisis at neque vel sagittis. Vivamus ultrices ipsum egestas turpis laoreet vulputate. Maecenas rhoncus molestie consequat. Aenean bibendum sem urna, cursus iaculis magna venenatis nec. Duis rutrum tellus a diam maximus, volutpat aliquet metus tincidunt. Praesent eget nulla lacus.
+</div>
+
+Vous visualisez bien la grille maintenant  <i class="far fa-smile-wink"></i>  et ce que vous devez comprendre ici, c'est que Kramdown isolera chaque paragraphe comme un élément HTML à part entière, encadré par les balises `<p>` et `</p>`. Chaque élément viendra donc se loger naturellement dans une cellule de la grille en alternant le passage d'une colonne à l'autre.
+
+Si l'effet que vous recherchez est plutôt d'enchaîner plusieurs paragraphes **au sein d'une même colonne**, avant de passer à la suivante, vous devrez vous y prendre de la façon suivante :
+
+```md
+<div class="multicolum">
+<div markdown="1">
+Phasellus lobortis eget tellus in gravida. Etiam fermentum massa commodo leo ullamcorper, vitae porttitor turpis eleifend. Nullam tincidunt diam sit amet pretium rhoncus. Vivamus id lorem augue. In fringilla efficitur ante id auctor. Donec auctor nisi sit amet est porttitor vestibulum. Integer volutpat, nisl sit amet euismod malesuada, justo diam ornare est, nec vestibulum risus massa at ligula.
+
+Integer eros arcu, vehicula ac luctus id, faucibus ac nibh. Nulla facilisi. Vivamus in interdum neque, at sodales lorem. Suspendisse et diam eu enim vehicula fringilla. Sed luctus dignissim mi, id pretium ante aliquam id. In eget nisl sit amet neque vestibulum maximus.
+</div>
+
+<div markdown="1">
+Vestibulum tellus nibh, dignissim non vehicula non, dignissim at massa. Maecenas sit amet nunc a felis dictum finibus. Proin gravida justo non dictum blandit. Integer fringilla dui vel ante vehicula congue. Duis venenatis dui sed sollicitudin lobortis. Donec metus ex, ornare a dui eget, pretium molestie quam. Vivamus efficitur ipsum a mollis cursus. Integer placerat nibh odio, sed porta nulla fringilla at.
+
+Donec a risus quis nunc lobortis vehicula. Phasellus malesuada sit amet lectus et porta. Nunc rutrum lobortis ante, non tristique magna rhoncus ac. Fusce tincidunt orci aliquet nunc posuere fringilla. In facilisis at neque vel sagittis. Vivamus ultrices ipsum egestas turpis laoreet vulputate. Maecenas rhoncus molestie consequat. Aenean bibendum sem urna, cursus iaculis magna venenatis nec. Duis rutrum tellus a diam maximus, volutpat aliquet metus tincidunt. Praesent eget nulla lacus.
+</div>
+</div>
+```
+
+<div class="multicolum">
+<div markdown="1">
+Phasellus lobortis eget tellus in gravida. Etiam fermentum massa commodo leo ullamcorper, vitae porttitor turpis eleifend. Nullam tincidunt diam sit amet pretium rhoncus. Vivamus id lorem augue. In fringilla efficitur ante id auctor. Donec auctor nisi sit amet est porttitor vestibulum. Integer volutpat, nisl sit amet euismod malesuada, justo diam ornare est, nec vestibulum risus massa at ligula.
+
+Integer eros arcu, vehicula ac luctus id, faucibus ac nibh. Nulla facilisi. Vivamus in interdum neque, at sodales lorem. Suspendisse et diam eu enim vehicula fringilla. Sed luctus dignissim mi, id pretium ante aliquam id. In eget nisl sit amet neque vestibulum maximus.
+</div>
+
+<div markdown="1">
+Vestibulum tellus nibh, dignissim non vehicula non, dignissim at massa. Maecenas sit amet nunc a felis dictum finibus. Proin gravida justo non dictum blandit. Integer fringilla dui vel ante vehicula congue. Duis venenatis dui sed sollicitudin lobortis. Donec metus ex, ornare a dui eget, pretium molestie quam. Vivamus efficitur ipsum a mollis cursus. Integer placerat nibh odio, sed porta nulla fringilla at.
+
+Donec a risus quis nunc lobortis vehicula. Phasellus malesuada sit amet lectus et porta. Nunc rutrum lobortis ante, non tristique magna rhoncus ac. Fusce tincidunt orci aliquet nunc posuere fringilla. In facilisis at neque vel sagittis. Vivamus ultrices ipsum egestas turpis laoreet vulputate. Maecenas rhoncus molestie consequat. Aenean bibendum sem urna, cursus iaculis magna venenatis nec. Duis rutrum tellus a diam maximus, volutpat aliquet metus tincidunt. Praesent eget nulla lacus.
+</div>
+</div>
+
+Vous voyez que l'effet obtenu n'est pas du tout le même. Cette fois, les paragraphes sont encapsulés dans 2 blocs distincts. Et ce sont ces 2 blocs qui seront distribués d'une colonne à l'autre.
+
+Si on reprend, non pas ce dernier exemple, mais le précédent, en passant à 3 colonnes :
+
+```md
+<div class="multicolum c-3" markdown="1">
+Phasellus lobortis eget tellus in gravida. Etiam fermentum massa commodo leo ullamcorper, vitae porttitor turpis eleifend. Nullam tincidunt diam sit amet pretium rhoncus. Vivamus id lorem augue. In fringilla efficitur ante id auctor. Donec auctor nisi sit amet est porttitor vestibulum. Integer volutpat, nisl sit amet euismod malesuada, justo diam ornare est, nec vestibulum risus massa at ligula.
+
+Integer eros arcu, vehicula ac luctus id, faucibus ac nibh. Nulla facilisi. Vivamus in interdum neque, at sodales lorem. Suspendisse et diam eu enim vehicula fringilla. Sed luctus dignissim mi, id pretium ante aliquam id. In eget nisl sit amet neque vestibulum maximus.
+
+Vestibulum tellus nibh, dignissim non vehicula non, dignissim at massa. Maecenas sit amet nunc a felis dictum finibus. Proin gravida justo non dictum blandit. Integer fringilla dui vel ante vehicula congue. Duis venenatis dui sed sollicitudin lobortis. Donec metus ex, ornare a dui eget, pretium molestie quam. Vivamus efficitur ipsum a mollis cursus. Integer placerat nibh odio, sed porta nulla fringilla at.
+
+Donec a risus quis nunc lobortis vehicula. Phasellus malesuada sit amet lectus et porta. Nunc rutrum lobortis ante, non tristique magna rhoncus ac. Fusce tincidunt orci aliquet nunc posuere fringilla. In facilisis at neque vel sagittis. Vivamus ultrices ipsum egestas turpis laoreet vulputate. Maecenas rhoncus molestie consequat. Aenean bibendum sem urna, cursus iaculis magna venenatis nec. Duis rutrum tellus a diam maximus, volutpat aliquet metus tincidunt. Praesent eget nulla lacus.
+</div>
+```
+
+On obtient le résultat suivant :
+
+<div class="multicolum c-3" markdown="1">
+Phasellus lobortis eget tellus in gravida. Etiam fermentum massa commodo leo ullamcorper, vitae porttitor turpis eleifend. Nullam tincidunt diam sit amet pretium rhoncus. Vivamus id lorem augue. In fringilla efficitur ante id auctor. Donec auctor nisi sit amet est porttitor vestibulum. Integer volutpat, nisl sit amet euismod malesuada, justo diam ornare est, nec vestibulum risus massa at ligula.
+
+Integer eros arcu, vehicula ac luctus id, faucibus ac nibh. Nulla facilisi. Vivamus in interdum neque, at sodales lorem. Suspendisse et diam eu enim vehicula fringilla. Sed luctus dignissim mi, id pretium ante aliquam id. In eget nisl sit amet neque vestibulum maximus.
+
+Vestibulum tellus nibh, dignissim non vehicula non, dignissim at massa. Maecenas sit amet nunc a felis dictum finibus. Proin gravida justo non dictum blandit. Integer fringilla dui vel ante vehicula congue. Duis venenatis dui sed sollicitudin lobortis. Donec metus ex, ornare a dui eget, pretium molestie quam. Vivamus efficitur ipsum a mollis cursus. Integer placerat nibh odio, sed porta nulla fringilla at.
+
+Donec a risus quis nunc lobortis vehicula. Phasellus malesuada sit amet lectus et porta. Nunc rutrum lobortis ante, non tristique magna rhoncus ac. Fusce tincidunt orci aliquet nunc posuere fringilla. In facilisis at neque vel sagittis. Vivamus ultrices ipsum egestas turpis laoreet vulputate. Maecenas rhoncus molestie consequat. Aenean bibendum sem urna, cursus iaculis magna venenatis nec. Duis rutrum tellus a diam maximus, volutpat aliquet metus tincidunt. Praesent eget nulla lacus.
+</div>
+
+On obtient l'enchaînement :
+
+```
+1
+
+2               1    2    3
+        =>
+3               4
+
+4
+```
+
+Et si on passe à 4 colonnes :
+
+```md
+<div class="multicolum c-4" markdown="1">
+Phasellus lobortis eget tellus in gravida. Etiam fermentum massa commodo leo ullamcorper, vitae porttitor turpis eleifend. Nullam tincidunt diam sit amet pretium rhoncus. Vivamus id lorem augue. In fringilla efficitur ante id auctor. Donec auctor nisi sit amet est porttitor vestibulum. Integer volutpat, nisl sit amet euismod malesuada, justo diam ornare est, nec vestibulum risus massa at ligula.
+
+Integer eros arcu, vehicula ac luctus id, faucibus ac nibh. Nulla facilisi. Vivamus in interdum neque, at sodales lorem. Suspendisse et diam eu enim vehicula fringilla. Sed luctus dignissim mi, id pretium ante aliquam id. In eget nisl sit amet neque vestibulum maximus.
+
+Vestibulum tellus nibh, dignissim non vehicula non, dignissim at massa. Maecenas sit amet nunc a felis dictum finibus. Proin gravida justo non dictum blandit. Integer fringilla dui vel ante vehicula congue. Duis venenatis dui sed sollicitudin lobortis. Donec metus ex, ornare a dui eget, pretium molestie quam. Vivamus efficitur ipsum a mollis cursus. Integer placerat nibh odio, sed porta nulla fringilla at.
+
+Donec a risus quis nunc lobortis vehicula. Phasellus malesuada sit amet lectus et porta. Nunc rutrum lobortis ante, non tristique magna rhoncus ac. Fusce tincidunt orci aliquet nunc posuere fringilla. In facilisis at neque vel sagittis. Vivamus ultrices ipsum egestas turpis laoreet vulputate. Maecenas rhoncus molestie consequat. Aenean bibendum sem urna, cursus iaculis magna venenatis nec. Duis rutrum tellus a diam maximus, volutpat aliquet metus tincidunt. Praesent eget nulla lacus.
+</div>
+```
+
+<div class="multicolum c-4" markdown="1">
+Phasellus lobortis eget tellus in gravida. Etiam fermentum massa commodo leo ullamcorper, vitae porttitor turpis eleifend. Nullam tincidunt diam sit amet pretium rhoncus. Vivamus id lorem augue. In fringilla efficitur ante id auctor. Donec auctor nisi sit amet est porttitor vestibulum. Integer volutpat, nisl sit amet euismod malesuada, justo diam ornare est, nec vestibulum risus massa at ligula.
+
+Integer eros arcu, vehicula ac luctus id, faucibus ac nibh. Nulla facilisi. Vivamus in interdum neque, at sodales lorem. Suspendisse et diam eu enim vehicula fringilla. Sed luctus dignissim mi, id pretium ante aliquam id. In eget nisl sit amet neque vestibulum maximus.
+
+Vestibulum tellus nibh, dignissim non vehicula non, dignissim at massa. Maecenas sit amet nunc a felis dictum finibus. Proin gravida justo non dictum blandit. Integer fringilla dui vel ante vehicula congue. Duis venenatis dui sed sollicitudin lobortis. Donec metus ex, ornare a dui eget, pretium molestie quam. Vivamus efficitur ipsum a mollis cursus. Integer placerat nibh odio, sed porta nulla fringilla at.
+
+Donec a risus quis nunc lobortis vehicula. Phasellus malesuada sit amet lectus et porta. Nunc rutrum lobortis ante, non tristique magna rhoncus ac. Fusce tincidunt orci aliquet nunc posuere fringilla. In facilisis at neque vel sagittis. Vivamus ultrices ipsum egestas turpis laoreet vulputate. Maecenas rhoncus molestie consequat. Aenean bibendum sem urna, cursus iaculis magna venenatis nec. Duis rutrum tellus a diam maximus, volutpat aliquet metus tincidunt. Praesent eget nulla lacus.
+</div>
+
+Vous voyez que la justification du texte peut commencer à poser problème... c'est pourquoi je préfère ne pas vous proposer davantage de colonnes, et considérer qu'un multicolonnage à 4 colonnes est largement suffisant ! J'espère avoir été assez clair sur la logique d'enchaînement et d'alternance entre les colonnes...
+
+### Construire une grille d'images
+
+Pour des images, la logique est exactement la même :
+
+```md
+<div class="multicolum" markdown="1">
+![PyGamer vue 1][pygamer1]
+
+![PyGamer vue 2][pygamer2]
+
+![PyGamer vue 3][pygamer3]
+
+![PyGamer vue 4][pygamer4]
+</div>
+
+<!-- références à placer en fin d'article -->
+[pygamer1]: https://cdn-shop.adafruit.com/970x728/4242-00.jpg
+[pygamer2]: https://cdn-shop.adafruit.com/970x728/4242-04.jpg
+[pygamer3]: https://cdn-shop.adafruit.com/970x728/4238-06.jpg
+[pygamer4]: https://cdn-shop.adafruit.com/970x728/4238-07.jpg
+```
+
+<div class="multicolum" markdown="1">
+![PyGamer vue 1][pygamer1]
+
+![PyGamer vue 2][pygamer2]
+
+![PyGamer vue 3][pygamer3]
+
+![PyGamer vue 4][pygamer4]
+</div>
+
+<!-- références à placer en fin d'article -->
+
+Le passage à 4 colonnes se fait ici le plus simplement du monde :
+
+```md
+<div class="multicolum c-4" markdown="1">
+![PyGamer vue 1][pygamer1]
+
+![PyGamer vue 2][pygamer2]
+
+![PyGamer vue 3][pygamer3]
+
+![PyGamer vue 4][pygamer4]
+</div>
+```
+
+<div class="multicolum c-4" markdown="1">
+![PyGamer vue 1][pygamer1]
+
+![PyGamer vue 2][pygamer2]
+
+![PyGamer vue 3][pygamer3]
+
+![PyGamer vue 4][pygamer4]
+</div>
+
+Les images ci-dessus ont toutes la même taille. La grille apparaît donc comme parfaitement régulière. Mais comment faire lorsque les images n'ont pas la même taille ?
+
+### Redimensionnement des images
+
+Prenons l'exemple de la grille suivante :
+
+```md
+<div class="multicolum" markdown="1">
+![La PyGamer][pygamer1]
+
+![La 32blit][32blit]
+</div>
+
+<!-- on ajoutera cette référence en fin d'article -->
+[32blit]: {{ '{{ myassets'}} }}/images/32blit.jpg
+```
+
+On obtient alors l'agencement disgracieux :
+
+<div class="multicolum" markdown="1">
+![La PyGamer][pygamer1]
+
+![La 32blit][32blit]
+</div>
+
+Pour obtenir une mise en forme plus régulière, il suffit simplement de redimensionner les images en leur affectant la même hauteur :
+
+```md
+<div class="multicolum" markdown="1">
+![La PyGamer][pygamer1]{: height="200"}
+
+![La 32blit][32blit]{: height="200"}
+</div>
+```
+
+<div class="multicolum" markdown="1">
+![La PyGamer][pygamer1]{: height="200"}
+
+![La 32blit][32blit]{: height="200"}
+</div>
+
+Vous pouvez remarquer ici que le redimensionnement est réalisé de telle sorte que les deux images aient exactement les mêmes dimensions et donc, nécessairement, en modifiant leur ratio original... mais j'ai fait en sorte qu'il n'y ait pas de déformation ! Au contraire, les images sont **recadrées** dans l'espace qui leur est alloué  <i class="far fa-smile"></i>
+
+### Alignement des cellules de la grille
+
+Vous pouvez également apposer un texte de légende à côté d'une image par exemple :
+
+```md
+<div class="multicolum" markdown="1">
+![La PyGamer][pygamer1]
+
+Integer eros arcu, vehicula ac luctus id, faucibus ac nibh. Nulla facilisi. Vivamus in interdum neque, at sodales lorem. Suspendisse et diam eu enim vehicula fringilla. Sed luctus dignissim mi, id pretium ante aliquam id. In eget nisl sit amet neque vestibulum maximus.
+</div>
+```
+
+<div class="multicolum" markdown="1">
+![La PyGamer][pygamer1]
+
+Integer eros arcu, vehicula ac luctus id, faucibus ac nibh. Nulla facilisi. Vivamus in interdum neque, at sodales lorem. Suspendisse et diam eu enim vehicula fringilla. Sed luctus dignissim mi, id pretium ante aliquam id. In eget nisl sit amet neque vestibulum maximus.
+</div>
+
+Par défaut l'alignement vertical s'effectue en alignant les bords supérieurs des éléments contenus dans les cellules de la grille. Mais vous pouvez tout à fait obtenir un alignement centré :
+
+```md
+<div class="multicolum middle" markdown="1">
+![La PyGamer][pygamer1]
+
+Integer eros arcu, vehicula ac luctus id, faucibus ac nibh. Nulla facilisi. Vivamus in interdum neque, at sodales lorem. Suspendisse et diam eu enim vehicula fringilla. Sed luctus dignissim mi, id pretium ante aliquam id. In eget nisl sit amet neque vestibulum maximus.
+</div>
+```
+
+<div class="multicolum middle" markdown="1">
+![La PyGamer][pygamer1]
+
+Integer eros arcu, vehicula ac luctus id, faucibus ac nibh. Nulla facilisi. Vivamus in interdum neque, at sodales lorem. Suspendisse et diam eu enim vehicula fringilla. Sed luctus dignissim mi, id pretium ante aliquam id. In eget nisl sit amet neque vestibulum maximus.
+</div>
+
+ou un alignement selon le bord inférieur des éléments contenus dans les cellules de la grille :
+
+```md
+<div class="multicolum bottom" markdown="1">
+![La PyGamer][pygamer1]
+
+Integer eros arcu, vehicula ac luctus id, faucibus ac nibh. Nulla facilisi. Vivamus in interdum neque, at sodales lorem. Suspendisse et diam eu enim vehicula fringilla. Sed luctus dignissim mi, id pretium ante aliquam id. In eget nisl sit amet neque vestibulum maximus.
+</div>
+```
+
+<div class="multicolum bottom" markdown="1">
+![La PyGamer][pygamer1]
+
+Integer eros arcu, vehicula ac luctus id, faucibus ac nibh. Nulla facilisi. Vivamus in interdum neque, at sodales lorem. Suspendisse et diam eu enim vehicula fringilla. Sed luctus dignissim mi, id pretium ante aliquam id. In eget nisl sit amet neque vestibulum maximus.
+</div>
+
+
 ## Les helper-classes
 
 `.discrete`
@@ -817,9 +1165,13 @@ Vous permet de prévenir un risque de débordement et d'encapsuler l'élément H
 --------------------------------------------------------------------------------
 {% endcomment %}
 
-[adafruit-pygamer]: https://cdn-shop.adafruit.com/1200x900/4242-00.jpg
+[32blit]:           {{ myassets }}/images/32blit.jpg
 [fontawesome]:      https://fontawesome.com/icons
 [kramdown]:         https://kramdown.gettalong.org/quickref.html
 [liquid]:           https://shopify.github.io/liquid/
 [markdown]:         https://www.markdownguide.org/
+[pygamer1]:         https://cdn-shop.adafruit.com/970x728/4242-00.jpg
+[pygamer2]:         https://cdn-shop.adafruit.com/970x728/4242-04.jpg
+[pygamer3]:         https://cdn-shop.adafruit.com/970x728/4238-06.jpg
+[pygamer4]:         https://cdn-shop.adafruit.com/970x728/4238-07.jpg
 [sass]:             https://sass-lang.com/
