@@ -133,13 +133,13 @@
             background-repeat: no-repeat;
             box-shadow: 0 2px 4px rgba(#000, .25);
 
-            &.adafruit    { background-image: url('../icons/adafruit.svg');  }
-            &.blit        { background-image: url('../icons/32blit.svg');    }
-            &.gamebuino   { background-image: url('../icons/gamebuino.svg'); }
-            &.bigpewpew   { background-image: url('../icons/big-pew-pew.svg');  }
-            &.smallpewpew { background-image: url('../icons/small-pew-pew.svg');  }
-            &.pixelart    { background-image: url('../icons/pixelart.svg');  }
-            &.tontons     { background-image: url('../icons/les-tontons-codeurs.svg');  }
+            &.icon-32blit      { background-image: url('../icons/32blit.svg'); }
+            &.icon-adafruit    { background-image: url('../icons/adafruit.svg'); }
+            &.icon-gamebuino   { background-image: url('../icons/gamebuino.svg'); }
+            &.icon-bigpewpew   { background-image: url('../icons/big-pew-pew.svg'); }
+            &.icon-smallpewpew { background-image: url('../icons/small-pew-pew.svg'); }
+            &.icon-pixelart    { background-image: url('../icons/pixelart.svg'); }
+            &.icon-tontons     { background-image: url('../icons/les-tontons-codeurs.svg'); }
         }
 
         .details {

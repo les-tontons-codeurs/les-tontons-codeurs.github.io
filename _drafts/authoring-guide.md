@@ -287,7 +287,7 @@ où `slugified-title` doit correspondre au titre *URL compliant* de votre articl
 
 # Astuces de mise en forme
 
-Nous allons maintenant examiner quelques règles de mise en forme concernant la plupart des composants dont vous aurez besoin au cours de la rédaction de vos articles. Je pars du principe que vous maîtrisez le langage Markdown et ses règles syntaxiques. Je ne m'attarderai donc pas sur son usage standard. Vous pouvez toujours vous référer, par exemple, [au guide suivant][markdown] si nécessaire. Notez que Jekyll utilise par défaut un dialecte enrichi de Markdown automatiquement interprété par le moteur [Kramdown][kramdown].
+Nous allons maintenant examiner quelques règles de mise en forme concernant la plupart des composants dont vous aurez besoin au cours de la rédaction de vos articles. Je pars du principe que vous maîtrisez le langage Markdown et ses règles syntaxiques. Je ne m'attarderai donc pas sur son usage standard. Vous pouvez toujours vous référer, par exemple, [au guide suivant][markdown2] si nécessaire. Vous trouverez aussi quelques références de documentation en fin d'article. Notez que Jekyll utilise par défaut un dialecte enrichi de Markdown automatiquement interprété par le moteur [Kramdown][kramdown].
 
 Kramdown vous permet, entre autre, de préciser certains attributs des éléments HTML générés par Jekyll à partir de votre texte source. Nous allons en examiner quelques exemples.
 
@@ -604,6 +604,67 @@ Attention toutefois à respecter le ratio original de l'image si vous spécifiez
 > **Remarque**
 > 
 > Les contraintes de redimensionnement ne sont (volontairement) pas prises en compte sur les smartphones.
+
+
+### Recadrage des images
+
+En fait, il est possible de fixer les dimensions d'une image comme vous le souhaitez, sans la déformer, même si vous ne respectez pas le ratio d'origine. Cela revient simplement à recadrer l'image à l'intérieur de la zone que vous lui réservez pour l'affichage. Prenons par exemple l'image suivante :
+
+```md
+<!-- insertion de l'image -->
+![Big PewPew][pewpew]
+
+<!-- Référence à placer en fin d'article -->
+[pewpew]: https://hackaday.com/wp-content/uploads/2019/06/pewpewsqr.jpg?w=600&h=600
+```
+
+![Big PewPew][pewpew]
+
+Si vous redimensionnez simplement l'image sur une zone de **400x200** :
+
+```md
+![Big PewPew][pewpew]{: width="400" height="200" }
+```
+
+L'image est déformée... forcément :
+
+![Big PewPew][pewpew]{: width="400" height="200" }
+
+Pour la recadrer, sans la déformer, vous pouvez utiliser le *helper* CSS `.cropped` :
+
+```md
+![Big PewPew][pewpew]{: width="400" height="200" .cropped }
+```
+
+![Big PewPew][pewpew]{: width="400" height="200" .cropped }
+
+L'image n'est effectivement pas déformée, mais le recadrage s'effectue par-rapport au centre de l'image. Si vous souhaitez faire glisser l'image dans son cadre pour paramétrer son recadrage, vous pouvez utiliser la propriété CSS `object-position: x y`, où `x` et `y` peuvent être exprimés en pixels ou en pourcentages et indiquent le décalage horizontal et vertical de l'image par-rapport à son cadre. Par défaut, le recadrage est paramétré ainsi :
+
+```css
+object-position: 50% 50%;
+```
+
+Pour recentrer notre image sur la face avant du PewPew, il suffit d'indiquer que l'on souhaite décaler l'image de **100%** selon l'axe vertical :
+
+```md
+![Big PewPew][pewpew]{: width="400" height="200" .cropped style="object-position: 50% 100%" }
+```
+
+![Big PewPew][pewpew]{: width="400" height="200" .cropped style="object-position: 50% 100%" }
+
+Si on souhaite maintenant afficher la face arrière du PewPew, on effectuera un décalage de **0%** selon l'axe vertical :
+
+```md
+![Big PewPew][pewpew]{: width="400" height="200" .cropped style="object-position: 50% 0" }
+```
+
+![Big PewPew][pewpew]{: width="400" height="200" .cropped style="object-position: 50% 0" }
+
+> Super pratique, nan ?
+> 
+> **On n'a pas touché à l'image originale !!!**
+{: .center }
+
 
 ### Un peu de cosmétique
 
@@ -962,6 +1023,10 @@ Donec a risus quis nunc lobortis vehicula. Phasellus malesuada sit amet lectus e
 
 Vous voyez que la justification du texte peut commencer à poser problème... c'est pourquoi je préfère ne pas vous proposer davantage de colonnes, et considérer qu'un multicolonnage à 4 colonnes est largement suffisant ! J'espère avoir été assez clair sur la logique d'enchaînement et d'alternance entre les colonnes...
 
+> **Remarque**
+> 
+> Sur les petits écrans comme ceux des smartphones, le passage à 3 ou 4 colonnes est trop étriqué. Par conséquent le template basculera **automatiquement** sur 2 colonnes. Vous n'avez donc pas vraiment besoin de vous en soucier  <i class="far fa-smile-wink"></i>
+
 ### Construire une grille d'images
 
 Pour des images, la logique est exactement la même :
@@ -1056,12 +1121,14 @@ Pour obtenir une mise en forme plus régulière, il suffit simplement de redimen
 ```
 
 <div class="multicolum" markdown="1">
-![La PyGamer][pygamer1]{: height="200"}
+![La PyGamer][pygamer1]{: height="200" }
 
 ![La 32blit][32blit]{: height="200"}
 </div>
 
-Vous pouvez remarquer ici que le redimensionnement est réalisé de telle sorte que les deux images aient exactement les mêmes dimensions et donc, nécessairement, en modifiant leur ratio original... mais j'ai fait en sorte qu'il n'y ait pas de déformation ! Au contraire, les images sont **recadrées** dans l'espace qui leur est alloué  <i class="far fa-smile"></i>
+Vous pouvez remarquer ici que le redimensionnement est réalisé de telle sorte que les deux images aient exactement les mêmes dimensions et donc, nécessairement, en modifiant leur ratio original... mais le redimensionnement est opéré sans déformation des images ! Au contraire, les images sont **recadrées** dans l'espace qui leur est alloué, exactement comme si on avait utilisé le *helper* CSS `.cropped` , qui est en fait appliqué **implicitement** ici.
+
+Si le recadrage automatique des images ne vous convient pas, vous avez la possibilité de le paramétrer vous même en jouant sur le décalage horizontal et vertical de l'image par-rapport à son cadre d'affichage avec la propriété CSS `object-position`, que nous avons déjà examinée précédemment.
 
 ### Alignement des cellules de la grille
 
@@ -1139,6 +1206,10 @@ Vous permet de contraindre l'élément HTML à n'occuper que 50% de la largeur d
 
 Vous permet de contraindre l'élément HTML à n'occuper que 75% de la largeur disponible.
 
+`.cropped`
+
+Vous permet de recadrer une image dans son cadre d'affichage.
+
 `.sharp`
 
 Vous permet de supprimer l'effet de coins arrondis sur les éléments multimedia.
@@ -1159,19 +1230,45 @@ Vous permet de prévenir un risque de débordement et d'encapsuler l'élément H
 > concernant des mises en forme fréquemment utilisées
 {: .center }
 
+
+{% comment %}
+--------------------------------------------------------------------------------
+--                              nouvelle section                              --
+--------------------------------------------------------------------------------
+{% endcomment %}
+
+
+# Quelques docs de référence
+
+**Markdown**
+
+- [Documentation originale de Markdown][markdown1] par Aaron Swartz et John Gruber (Daring Fireball)
+- [The Markdown Guide][markdown2] : un guide collectif revisité plus complet et plus récent
+- [La documentation de GitHub][markdown3] : concise et simplifiée
+
+**Jekyll & Liquid**
+
+- [La documentation officielle de Jekyll][jekyll]
+- [La documentation officielle de Liquid][liquid]
+
+
 {% comment %}
 --------------------------------------------------------------------------------
 --                            liste des références                            --
 --------------------------------------------------------------------------------
 {% endcomment %}
 
-[32blit]:           {{ myassets }}/images/32blit.jpg
-[fontawesome]:      https://fontawesome.com/icons
-[kramdown]:         https://kramdown.gettalong.org/quickref.html
-[liquid]:           https://shopify.github.io/liquid/
-[markdown]:         https://www.markdownguide.org/
-[pygamer1]:         https://cdn-shop.adafruit.com/970x728/4242-00.jpg
-[pygamer2]:         https://cdn-shop.adafruit.com/970x728/4242-04.jpg
-[pygamer3]:         https://cdn-shop.adafruit.com/970x728/4238-06.jpg
-[pygamer4]:         https://cdn-shop.adafruit.com/970x728/4238-07.jpg
-[sass]:             https://sass-lang.com/
+[32blit]:      {{ myassets }}/images/32blit.jpg
+[fontawesome]: https://fontawesome.com/icons
+[jekyll]:      https://jekyllrb.com/docs/
+[kramdown]:    https://kramdown.gettalong.org/quickref.html
+[liquid]:      https://shopify.github.io/liquid/
+[markdown1]:   https://daringfireball.net/projects/markdown/
+[markdown2]:   https://www.markdownguide.org/
+[markdown3]:   https://guides.github.com/features/mastering-markdown/
+[pewpew]:      https://hackaday.com/wp-content/uploads/2019/06/pewpewsqr.jpg?w=600&h=600
+[pygamer1]:    https://cdn-shop.adafruit.com/970x728/4242-00.jpg
+[pygamer2]:    https://cdn-shop.adafruit.com/970x728/4242-04.jpg
+[pygamer3]:    https://cdn-shop.adafruit.com/970x728/4238-06.jpg
+[pygamer4]:    https://cdn-shop.adafruit.com/970x728/4238-07.jpg
+[sass]:        https://sass-lang.com/
