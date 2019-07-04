@@ -71,7 +71,7 @@
 
                     {% for p in article.platforms %}
                         <li class="platform">{{ site.data.platforms | where: 'key', p | map: 'name' }}</li>
-                        {% endfor %}
+                    {% endfor %}
                         
                     {% for l in article.languages %}
                         <li class="lang">{{ site.data.languages | where: 'key', l | map: 'name' }}</li>

@@ -93,6 +93,20 @@
                     <h2>{{ page.subtitle }}</h2>
                 {% endif %}
                 <p class="date">Article publié le {{ weekday }} {{ day }} {{ month }} {{ year }}</p>
+                <ul class="metadata">
+                    {% for t in page.type %}
+                        <li class="type">{{ site.data.type | where: 'key', t | map: 'name' }}</li>
+                    {% endfor %}
+                    {% for p in page.platforms %}
+                        <li class="platform">{{ site.data.platforms | where: 'key', p | map: 'name' }}</li>
+                    {% endfor %}
+                    {% for l in page.languages %}
+                        <li class="lang">{{ site.data.languages | where: 'key', l | map: 'name' }}</li>
+                    {% endfor %}
+                    {% for tag in page.tags %}
+                        <li class="tag">{{ tag }}</li>
+                    {% endfor %}
+                </ul>
             </header>
 
             <section class="preamble">

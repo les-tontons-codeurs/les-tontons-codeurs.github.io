@@ -668,7 +668,7 @@ Si on souhaite maintenant afficher la face arrière du PewPew, on effectuera un 
 
 ### Un peu de cosmétique
 
-Pour modifier l'habillage par défaut de l'image, vous pouvez utiliser les classes *helpers* CSS suivantes :
+Pour modifier l'habillage par défaut d'une image, vous pouvez utiliser les classes *helpers* CSS suivantes :
 
 - `sharp` supprime l'effet de coins arrondis
 - `noshadow` supprime l'ombre portée

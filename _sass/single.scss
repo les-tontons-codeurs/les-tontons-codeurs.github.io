@@ -197,10 +197,10 @@
                     text-shadow: 0 -1px 0 rgba(#000, .25);
                     box-shadow: 0 1px 2px rgba(#000, .25);
 
-                    &.type     { background-color: #a00; }
-                    &.platform { background-color: #333; }
-                    &.lang     { background-color: #08d; }
-                    &.tag      { background-color: #01999e; }
+                    &.type     { background-color: $metadata_type_color; }
+                    &.platform { background-color: $metadata_platform_color; }
+                    &.lang     { background-color: $metadata_lang_color; }
+                    &.tag      { background-color: $metadata_tag_color; }
                 }
             }
 
