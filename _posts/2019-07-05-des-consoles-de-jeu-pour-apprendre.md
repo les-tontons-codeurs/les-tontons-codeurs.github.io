@@ -66,7 +66,7 @@ Pour trouver des informations sur la pewpew et sa programmation, le [site de Rad
 
 ## Gamebuino
 
-![La console Gamebuino](/assets/images/gamebuino-856x462.png){: .w-50 }
+{% include demo.html console="gamebuino" %}
 
 Plus conséquente, la [Gamebuino][9] possède un écran, des touches, une batterie et un boitier.<br>
 Elle est programmable en C++ ou en CircuitPython. <br>
@@ -76,7 +76,7 @@ Le site Gamebuino propose des tutoriels au sein de [l'Académie][10].
 
 ## Pygamer
 
-![La console PyGamer](/assets/images/pygamer-832x486.png){: .w-50 }
+{% include demo.html console="pygamer" %}
 
 La [Pygamer][11] est une console conçue et fabriquée par [Adafruit][12].
 
