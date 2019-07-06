@@ -1,8 +1,8 @@
 ---
 title: Des consoles de jeu pour apprendre à programmer
 author: [titi]
-platform: [32blit, gamebuino, pygamer, microbit, pewpew]
-lang: [cpp, py, lua, mc]
+platforms: [32blit, gamebuino, pygamer, microbit, pewpew]
+languages: [cpp, py, lua, mc]
 tags: [Matériel, Général]
 ---
 
