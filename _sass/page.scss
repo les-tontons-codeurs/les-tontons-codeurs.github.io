@@ -233,7 +233,7 @@ article.page .body .youtube {
 // multicolonnage
 // -------------------------------------------------------------------------
 
-article.page .body .multicolum {
+article.page .body .multicolumn {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 1em 2em;
@@ -255,7 +255,7 @@ article.page .body .multicolum {
 }
 
 @media screen and (max-width: 600px) {
-    article.page .body .multicolum {
+    article.page .body .multicolumn {
         &.c-3 { grid-template-columns: 1fr 1fr; }
         &.c-4 { grid-template-columns: 1fr 1fr; }
     }

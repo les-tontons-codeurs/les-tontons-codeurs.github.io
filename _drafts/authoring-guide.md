@@ -826,21 +826,20 @@ Pour la PyGamer, c'est pareil, à la différence près qu'il faut spécifier `co
 > 
 > Les images de démo pour la Gamebuino et la PyGamer doivent respecter le ratio des dimensions de leur écran, qui mesure **160x128** px. Les images que j'utilise ici mesurent **320x256** px. Elles respectent donc le ratio imposé, et j'ai volontairement intégré des images à une échelle **2:1** de manière à augmenter la densité de points et obtenir un meilleur rendu, avec plus de finesse, dans le navigateur. Aussi, je vous encourage à appliquer la même règle dans vos articles  <i class="far fa-smile-wink"></i>
 
-
 ## Appliquer un multicolonnage
 
 Vous pouvez délimiter une section de votre article pour lui appliquer une mise en forme qui s'étende sur 2, 3 ou 4 colonnes selon vos besoins. Markdown ne permet pas d'appliquer ce genre de mise en forme. Vous aurez donc recours à un balisage HTML pour pouvoir en profiter :
 
 ```md
-<div class="multicolum" markdown="1">
+<div class="multicolumn" markdown="1">
     <!-- votre contenu sur 2 colonnes -->
 </div>
 
-<div class="multicolum c-3" markdown="1">
+<div class="multicolumn c-3" markdown="1">
     <!-- votre contenu sur 3 colonnes -->
 </div>
 
-<div class="multicolum c-4" markdown="1">
+<div class="multicolumn c-4" markdown="1">
     <!-- votre contenu sur 4 colonnes -->
 </div>
 ```
@@ -854,7 +853,7 @@ Vous noterez la présence de l'attribut `markdown="1"` qui indique que tout ce q
 Commençons par un exemple simple pour apposer 2 paragraphes sur 2 colonnes :
 
 ```md
-<div class="multicolum" markdown="1">
+<div class="multicolumn" markdown="1">
 Phasellus lobortis eget tellus in gravida. Etiam fermentum massa commodo leo ullamcorper, vitae porttitor turpis eleifend. Nullam tincidunt diam sit amet pretium rhoncus. Vivamus id lorem augue. In fringilla efficitur ante id auctor. Donec auctor nisi sit amet est porttitor vestibulum. Integer volutpat, nisl sit amet euismod malesuada, justo diam ornare est, nec vestibulum risus massa at ligula.
 
 Integer eros arcu, vehicula ac luctus id, faucibus ac nibh. Nulla facilisi. Vivamus in interdum neque, at sodales lorem. Suspendisse et diam eu enim vehicula fringilla. Sed luctus dignissim mi, id pretium ante aliquam id. In eget nisl sit amet neque vestibulum maximus.
@@ -863,7 +862,7 @@ Integer eros arcu, vehicula ac luctus id, faucibus ac nibh. Nulla facilisi. Viva
 
 Vous obtiendrez le rendu suivant :
 
-<div class="multicolum" markdown="1">
+<div class="multicolumn" markdown="1">
 Phasellus lobortis eget tellus in gravida. Etiam fermentum massa commodo leo ullamcorper, vitae porttitor turpis eleifend. Nullam tincidunt diam sit amet pretium rhoncus. Vivamus id lorem augue. In fringilla efficitur ante id auctor. Donec auctor nisi sit amet est porttitor vestibulum. Integer volutpat, nisl sit amet euismod malesuada, justo diam ornare est, nec vestibulum risus massa at ligula.
 
 Integer eros arcu, vehicula ac luctus id, faucibus ac nibh. Nulla facilisi. Vivamus in interdum neque, at sodales lorem. Suspendisse et diam eu enim vehicula fringilla. Sed luctus dignissim mi, id pretium ante aliquam id. In eget nisl sit amet neque vestibulum maximus.
@@ -872,7 +871,7 @@ Integer eros arcu, vehicula ac luctus id, faucibus ac nibh. Nulla facilisi. Viva
 Jusque là, rien de compliqué... ajoutons maintenant un troisième paragraphe :
 
 ```md
-<div class="multicolum" markdown="1">
+<div class="multicolumn" markdown="1">
 Phasellus lobortis eget tellus in gravida. Etiam fermentum massa commodo leo ullamcorper, vitae porttitor turpis eleifend. Nullam tincidunt diam sit amet pretium rhoncus. Vivamus id lorem augue. In fringilla efficitur ante id auctor. Donec auctor nisi sit amet est porttitor vestibulum. Integer volutpat, nisl sit amet euismod malesuada, justo diam ornare est, nec vestibulum risus massa at ligula.
 
 Integer eros arcu, vehicula ac luctus id, faucibus ac nibh. Nulla facilisi. Vivamus in interdum neque, at sodales lorem. Suspendisse et diam eu enim vehicula fringilla. Sed luctus dignissim mi, id pretium ante aliquam id. In eget nisl sit amet neque vestibulum maximus.
@@ -881,7 +880,7 @@ Vestibulum tellus nibh, dignissim non vehicula non, dignissim at massa. Maecenas
 </div>
 ```
 
-<div class="multicolum" markdown="1">
+<div class="multicolumn" markdown="1">
 Phasellus lobortis eget tellus in gravida. Etiam fermentum massa commodo leo ullamcorper, vitae porttitor turpis eleifend. Nullam tincidunt diam sit amet pretium rhoncus. Vivamus id lorem augue. In fringilla efficitur ante id auctor. Donec auctor nisi sit amet est porttitor vestibulum. Integer volutpat, nisl sit amet euismod malesuada, justo diam ornare est, nec vestibulum risus massa at ligula.
 
 Integer eros arcu, vehicula ac luctus id, faucibus ac nibh. Nulla facilisi. Vivamus in interdum neque, at sodales lorem. Suspendisse et diam eu enim vehicula fringilla. Sed luctus dignissim mi, id pretium ante aliquam id. In eget nisl sit amet neque vestibulum maximus.
@@ -902,7 +901,7 @@ Vous voyez que l'enchaînement des élements s'effectue dans l'ordre de position
 L'ajout d'un 4e paragraphe suivra la même logique d'enchaînement :
 
 ```md
-<div class="multicolum" markdown="1">
+<div class="multicolumn" markdown="1">
 Phasellus lobortis eget tellus in gravida. Etiam fermentum massa commodo leo ullamcorper, vitae porttitor turpis eleifend. Nullam tincidunt diam sit amet pretium rhoncus. Vivamus id lorem augue. In fringilla efficitur ante id auctor. Donec auctor nisi sit amet est porttitor vestibulum. Integer volutpat, nisl sit amet euismod malesuada, justo diam ornare est, nec vestibulum risus massa at ligula.
 
 Integer eros arcu, vehicula ac luctus id, faucibus ac nibh. Nulla facilisi. Vivamus in interdum neque, at sodales lorem. Suspendisse et diam eu enim vehicula fringilla. Sed luctus dignissim mi, id pretium ante aliquam id. In eget nisl sit amet neque vestibulum maximus.
@@ -913,7 +912,7 @@ Donec a risus quis nunc lobortis vehicula. Phasellus malesuada sit amet lectus e
 </div>
 ```
 
-<div class="multicolum" markdown="1">
+<div class="multicolumn" markdown="1">
 Phasellus lobortis eget tellus in gravida. Etiam fermentum massa commodo leo ullamcorper, vitae porttitor turpis eleifend. Nullam tincidunt diam sit amet pretium rhoncus. Vivamus id lorem augue. In fringilla efficitur ante id auctor. Donec auctor nisi sit amet est porttitor vestibulum. Integer volutpat, nisl sit amet euismod malesuada, justo diam ornare est, nec vestibulum risus massa at ligula.
 
 Integer eros arcu, vehicula ac luctus id, faucibus ac nibh. Nulla facilisi. Vivamus in interdum neque, at sodales lorem. Suspendisse et diam eu enim vehicula fringilla. Sed luctus dignissim mi, id pretium ante aliquam id. In eget nisl sit amet neque vestibulum maximus.
@@ -928,7 +927,7 @@ Vous visualisez bien la grille maintenant  <i class="far fa-smile-wink"></i> 
 Si l'effet que vous recherchez est plutôt d'enchaîner plusieurs paragraphes **au sein d'une même colonne**, avant de passer à la suivante, vous devrez vous y prendre de la façon suivante :
 
 ```md
-<div class="multicolum">
+<div class="multicolumn">
 <div markdown="1">
 Phasellus lobortis eget tellus in gravida. Etiam fermentum massa commodo leo ullamcorper, vitae porttitor turpis eleifend. Nullam tincidunt diam sit amet pretium rhoncus. Vivamus id lorem augue. In fringilla efficitur ante id auctor. Donec auctor nisi sit amet est porttitor vestibulum. Integer volutpat, nisl sit amet euismod malesuada, justo diam ornare est, nec vestibulum risus massa at ligula.
 
@@ -943,7 +942,7 @@ Donec a risus quis nunc lobortis vehicula. Phasellus malesuada sit amet lectus e
 </div>
 ```
 
-<div class="multicolum">
+<div class="multicolumn">
 <div markdown="1">
 Phasellus lobortis eget tellus in gravida. Etiam fermentum massa commodo leo ullamcorper, vitae porttitor turpis eleifend. Nullam tincidunt diam sit amet pretium rhoncus. Vivamus id lorem augue. In fringilla efficitur ante id auctor. Donec auctor nisi sit amet est porttitor vestibulum. Integer volutpat, nisl sit amet euismod malesuada, justo diam ornare est, nec vestibulum risus massa at ligula.
 
@@ -962,7 +961,7 @@ Vous voyez que l'effet obtenu n'est pas du tout le même. Cette fois, les paragr
 Si on reprend, non pas ce dernier exemple, mais le précédent, en passant à 3 colonnes :
 
 ```md
-<div class="multicolum c-3" markdown="1">
+<div class="multicolumn c-3" markdown="1">
 Phasellus lobortis eget tellus in gravida. Etiam fermentum massa commodo leo ullamcorper, vitae porttitor turpis eleifend. Nullam tincidunt diam sit amet pretium rhoncus. Vivamus id lorem augue. In fringilla efficitur ante id auctor. Donec auctor nisi sit amet est porttitor vestibulum. Integer volutpat, nisl sit amet euismod malesuada, justo diam ornare est, nec vestibulum risus massa at ligula.
 
 Integer eros arcu, vehicula ac luctus id, faucibus ac nibh. Nulla facilisi. Vivamus in interdum neque, at sodales lorem. Suspendisse et diam eu enim vehicula fringilla. Sed luctus dignissim mi, id pretium ante aliquam id. In eget nisl sit amet neque vestibulum maximus.
@@ -975,7 +974,7 @@ Donec a risus quis nunc lobortis vehicula. Phasellus malesuada sit amet lectus e
 
 On obtient le résultat suivant :
 
-<div class="multicolum c-3" markdown="1">
+<div class="multicolumn c-3" markdown="1">
 Phasellus lobortis eget tellus in gravida. Etiam fermentum massa commodo leo ullamcorper, vitae porttitor turpis eleifend. Nullam tincidunt diam sit amet pretium rhoncus. Vivamus id lorem augue. In fringilla efficitur ante id auctor. Donec auctor nisi sit amet est porttitor vestibulum. Integer volutpat, nisl sit amet euismod malesuada, justo diam ornare est, nec vestibulum risus massa at ligula.
 
 Integer eros arcu, vehicula ac luctus id, faucibus ac nibh. Nulla facilisi. Vivamus in interdum neque, at sodales lorem. Suspendisse et diam eu enim vehicula fringilla. Sed luctus dignissim mi, id pretium ante aliquam id. In eget nisl sit amet neque vestibulum maximus.
@@ -1000,7 +999,7 @@ On obtient l'enchaînement :
 Et si on passe à 4 colonnes :
 
 ```md
-<div class="multicolum c-4" markdown="1">
+<div class="multicolumn c-4" markdown="1">
 Phasellus lobortis eget tellus in gravida. Etiam fermentum massa commodo leo ullamcorper, vitae porttitor turpis eleifend. Nullam tincidunt diam sit amet pretium rhoncus. Vivamus id lorem augue. In fringilla efficitur ante id auctor. Donec auctor nisi sit amet est porttitor vestibulum. Integer volutpat, nisl sit amet euismod malesuada, justo diam ornare est, nec vestibulum risus massa at ligula.
 
 Integer eros arcu, vehicula ac luctus id, faucibus ac nibh. Nulla facilisi. Vivamus in interdum neque, at sodales lorem. Suspendisse et diam eu enim vehicula fringilla. Sed luctus dignissim mi, id pretium ante aliquam id. In eget nisl sit amet neque vestibulum maximus.
@@ -1011,7 +1010,7 @@ Donec a risus quis nunc lobortis vehicula. Phasellus malesuada sit amet lectus e
 </div>
 ```
 
-<div class="multicolum c-4" markdown="1">
+<div class="multicolumn c-4" markdown="1">
 Phasellus lobortis eget tellus in gravida. Etiam fermentum massa commodo leo ullamcorper, vitae porttitor turpis eleifend. Nullam tincidunt diam sit amet pretium rhoncus. Vivamus id lorem augue. In fringilla efficitur ante id auctor. Donec auctor nisi sit amet est porttitor vestibulum. Integer volutpat, nisl sit amet euismod malesuada, justo diam ornare est, nec vestibulum risus massa at ligula.
 
 Integer eros arcu, vehicula ac luctus id, faucibus ac nibh. Nulla facilisi. Vivamus in interdum neque, at sodales lorem. Suspendisse et diam eu enim vehicula fringilla. Sed luctus dignissim mi, id pretium ante aliquam id. In eget nisl sit amet neque vestibulum maximus.
@@ -1032,7 +1031,7 @@ Vous voyez que la justification du texte peut commencer à poser problème... c'
 Pour des images, la logique est exactement la même :
 
 ```md
-<div class="multicolum" markdown="1">
+<div class="multicolumn" markdown="1">
 ![PyGamer vue 1][pygamer1]
 
 ![PyGamer vue 2][pygamer2]
@@ -1049,7 +1048,7 @@ Pour des images, la logique est exactement la même :
 [pygamer4]: https://cdn-shop.adafruit.com/970x728/4238-07.jpg
 ```
 
-<div class="multicolum" markdown="1">
+<div class="multicolumn" markdown="1">
 ![PyGamer vue 1][pygamer1]
 
 ![PyGamer vue 2][pygamer2]
@@ -1064,7 +1063,7 @@ Pour des images, la logique est exactement la même :
 Le passage à 4 colonnes se fait ici le plus simplement du monde :
 
 ```md
-<div class="multicolum c-4" markdown="1">
+<div class="multicolumn c-4" markdown="1">
 ![PyGamer vue 1][pygamer1]
 
 ![PyGamer vue 2][pygamer2]
@@ -1075,7 +1074,7 @@ Le passage à 4 colonnes se fait ici le plus simplement du monde :
 </div>
 ```
 
-<div class="multicolum c-4" markdown="1">
+<div class="multicolumn c-4" markdown="1">
 ![PyGamer vue 1][pygamer1]
 
 ![PyGamer vue 2][pygamer2]
@@ -1092,7 +1091,7 @@ Les images ci-dessus ont toutes la même taille. La grille apparaît donc comme 
 Prenons l'exemple de la grille suivante :
 
 ```md
-<div class="multicolum" markdown="1">
+<div class="multicolumn" markdown="1">
 ![La PyGamer][pygamer1]
 
 ![La 32blit][32blit]
@@ -1104,7 +1103,7 @@ Prenons l'exemple de la grille suivante :
 
 On obtient alors l'agencement disgracieux :
 
-<div class="multicolum" markdown="1">
+<div class="multicolumn" markdown="1">
 ![La PyGamer][pygamer1]
 
 ![La 32blit][32blit]
@@ -1113,14 +1112,14 @@ On obtient alors l'agencement disgracieux :
 Pour obtenir une mise en forme plus régulière, il suffit simplement de redimensionner les images en leur affectant la même hauteur :
 
 ```md
-<div class="multicolum" markdown="1">
+<div class="multicolumn" markdown="1">
 ![La PyGamer][pygamer1]{: height="200"}
 
 ![La 32blit][32blit]{: height="200"}
 </div>
 ```
 
-<div class="multicolum" markdown="1">
+<div class="multicolumn" markdown="1">
 ![La PyGamer][pygamer1]{: height="200" }
 
 ![La 32blit][32blit]{: height="200"}
@@ -1135,14 +1134,14 @@ Si le recadrage automatique des images ne vous convient pas, vous avez la possib
 Vous pouvez également apposer un texte de légende à côté d'une image par exemple :
 
 ```md
-<div class="multicolum" markdown="1">
+<div class="multicolumn" markdown="1">
 ![La PyGamer][pygamer1]
 
 Integer eros arcu, vehicula ac luctus id, faucibus ac nibh. Nulla facilisi. Vivamus in interdum neque, at sodales lorem. Suspendisse et diam eu enim vehicula fringilla. Sed luctus dignissim mi, id pretium ante aliquam id. In eget nisl sit amet neque vestibulum maximus.
 </div>
 ```
 
-<div class="multicolum" markdown="1">
+<div class="multicolumn" markdown="1">
 ![La PyGamer][pygamer1]
 
 Integer eros arcu, vehicula ac luctus id, faucibus ac nibh. Nulla facilisi. Vivamus in interdum neque, at sodales lorem. Suspendisse et diam eu enim vehicula fringilla. Sed luctus dignissim mi, id pretium ante aliquam id. In eget nisl sit amet neque vestibulum maximus.
@@ -1151,14 +1150,14 @@ Integer eros arcu, vehicula ac luctus id, faucibus ac nibh. Nulla facilisi. Viva
 Par défaut l'alignement vertical s'effectue en alignant les bords supérieurs des éléments contenus dans les cellules de la grille. Mais vous pouvez tout à fait obtenir un alignement centré :
 
 ```md
-<div class="multicolum middle" markdown="1">
+<div class="multicolumn middle" markdown="1">
 ![La PyGamer][pygamer1]
 
 Integer eros arcu, vehicula ac luctus id, faucibus ac nibh. Nulla facilisi. Vivamus in interdum neque, at sodales lorem. Suspendisse et diam eu enim vehicula fringilla. Sed luctus dignissim mi, id pretium ante aliquam id. In eget nisl sit amet neque vestibulum maximus.
 </div>
 ```
 
-<div class="multicolum middle" markdown="1">
+<div class="multicolumn middle" markdown="1">
 ![La PyGamer][pygamer1]
 
 Integer eros arcu, vehicula ac luctus id, faucibus ac nibh. Nulla facilisi. Vivamus in interdum neque, at sodales lorem. Suspendisse et diam eu enim vehicula fringilla. Sed luctus dignissim mi, id pretium ante aliquam id. In eget nisl sit amet neque vestibulum maximus.
@@ -1167,14 +1166,14 @@ Integer eros arcu, vehicula ac luctus id, faucibus ac nibh. Nulla facilisi. Viva
 ou un alignement selon le bord inférieur des éléments contenus dans les cellules de la grille :
 
 ```md
-<div class="multicolum bottom" markdown="1">
+<div class="multicolumn bottom" markdown="1">
 ![La PyGamer][pygamer1]
 
 Integer eros arcu, vehicula ac luctus id, faucibus ac nibh. Nulla facilisi. Vivamus in interdum neque, at sodales lorem. Suspendisse et diam eu enim vehicula fringilla. Sed luctus dignissim mi, id pretium ante aliquam id. In eget nisl sit amet neque vestibulum maximus.
 </div>
 ```
 
-<div class="multicolum bottom" markdown="1">
+<div class="multicolumn bottom" markdown="1">
 ![La PyGamer][pygamer1]
 
 Integer eros arcu, vehicula ac luctus id, faucibus ac nibh. Nulla facilisi. Vivamus in interdum neque, at sodales lorem. Suspendisse et diam eu enim vehicula fringilla. Sed luctus dignissim mi, id pretium ante aliquam id. In eget nisl sit amet neque vestibulum maximus.
