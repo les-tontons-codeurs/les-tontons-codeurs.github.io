@@ -1,3 +1,20 @@
 <nav class="sidebar">
-    Sidebar
+
+    {% assign authors = page.author | split: ',' | uniq %}
+    {% if authors.size > 1 %}
+        <div class="authors c-{{ authors.size | at_most: 3 }}">
+            <h1>Auteurs</h1>
+    {% else %}
+        <div class="authors">
+            <h1>Auteur</h1>
+    {% endif %}
+        {% for a in authors %}
+            {% assign author = site.data.authors | where: "key", a | first %}
+            <div class="author">
+                <div class="photo" style="background-image:url('{{ site.baseurl | append: author.photo }}')"></div>
+                <div class="name">{{ author.nick }}</div>
+            </div>
+        {% endfor %}
+    </div>
+
 </nav>

@@ -1,9 +1,12 @@
 - key:  max
   nick: Max
   name: Maxime Junchat
+  photo: /assets/images/max-288x288.jpg
 - key:  steph
   nick: Steph
   name: Stéphane Calderoni
+  photo: /assets/images/steph-288x288.jpg
 - key:  titi
   nick: Titi
   name: Thierry Chantier
+  photo: /assets/images/thierry-288x288.jpg
