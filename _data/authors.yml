@@ -1,12 +1,21 @@
-- key:  max
-  nick: Max
-  name: Maxime Junchat
-  photo: /assets/images/max-288x288.jpg
-- key:  steph
-  nick: Steph
-  name: Stéphane Calderoni
-  photo: /assets/images/steph-288x288.jpg
-- key:  titi
-  nick: Titi
-  name: Thierry Chantier
-  photo: /assets/images/thierry-288x288.jpg
+- key:     max
+  nick:    Max
+  name:    Maxime Junchat
+  photo:   /assets/images/max-288x288.jpg
+  email:   nobody@nowhe.re
+  discord: Max_#9848
+  github:  Maxibuino
+- key:     steph
+  nick:    Steph
+  name:    Stéphane Calderoni
+  photo:   /assets/images/steph-288x288.jpg
+  email:   nobody@nowhe.re
+  discord: Steph#9932
+  github:  iw4rr10r
+- key:     titi
+  nick:    Titi
+  name:    Thierry Chantier
+  photo:   /assets/images/thierry-288x288.jpg
+  email:   nobody@nowhe.re
+  discord: TitiMoby#8912
+  github:  titimoby
