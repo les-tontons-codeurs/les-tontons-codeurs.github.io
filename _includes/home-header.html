@@ -11,7 +11,7 @@
 </div>
 
 <div class="team">
-    <div class="member max"><span class="name">max</span></div>
-    <div class="member steph"><span class="name">steph</span></div>
-    <div class="member titi"><span class="name">titi</span></div>
+    {% for author in site.data.authors %}
+        <div class="member" style="background-image:url('{{ site.baseurl | append: author.photo }}')"><span class="name">{{ author.nick }}</span></div>
+    {% endfor %}
 </div>

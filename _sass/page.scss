@@ -107,7 +107,7 @@ article.page .body {
         // border-bottom: 1px solid #800;
     }
 
-    h1 { font-size: 1.75rem; border-bottom: 1px solid #800; }
+    h1 { font-size: 1.75rem; } // border-bottom: 1px solid #800;
     h2 { font-size: 1.5rem; }
     h3 { font-size: 1.25rem; }
     h4 { font-size: 1.25rem; color: #000; }
@@ -233,7 +233,7 @@ article.page .body .youtube {
 // multicolonnage
 // -------------------------------------------------------------------------
 
-article.page .body .multicolum {
+article.page .body .multicolumn {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 1em 2em;
@@ -255,7 +255,7 @@ article.page .body .multicolum {
 }
 
 @media screen and (max-width: 600px) {
-    article.page .body .multicolum {
+    article.page .body .multicolumn {
         &.c-3 { grid-template-columns: 1fr 1fr; }
         &.c-4 { grid-template-columns: 1fr 1fr; }
     }
@@ -377,5 +377,86 @@ article.page .body {
 
     code.highlighter-rouge {
         color: #068;
+    }
+}
+
+// -------------------------------------------------------------------------
+// pied de page de l'article
+// -------------------------------------------------------------------------
+
+article.page .footer {
+    margin-top: 3rem;
+
+    .authoring {
+
+        .caption{
+            display: block;
+            margin-bottom: .5em;
+            font-size: 1.1rem;
+            color: darken($page_bgcolor, 20%);
+            text-shadow: 0 1px 1px #fff;
+            text-align: center;
+        }
+
+        .authors {
+            display: flex;
+            justify-content: center;
+
+            .author {
+                display: grid;
+                grid-template-rows: 80px auto;
+                justify-items: center;
+
+                margin: 16px;
+        
+                .photo {
+                    width: 80px;
+                    height: 80px;
+                    border-radius: 40px;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-color: #444;
+                    box-shadow: inset 0 0 16px 2px rgba(#000, .75);
+                }
+        
+                .name {
+                    margin-top: .25em;
+                    color: #444;
+                    text-transform: capitalize;
+                    text-shadow: 0 1px 2px rgba(#000, .25);
+                }
+
+                .details {
+                    display: grid;
+                    margin-top: .5rem;
+
+                    .rows {
+                        display: grid;
+                        grid-template-columns: auto 1fr;
+                        align-items: center;
+                        
+                        font-size: .9rem;
+                        line-height: 1.75em;
+                        text-shadow: 0 1px 0 #fff;
+
+                        $tint: #0ca;
+                        $color: mix($tint, lighten($page_text_color, 20%), 40%);
+                        color: $color;
+
+                        // .discord { color: lighten($page_text_color, 20%); }
+
+                        a {
+                            color: $color;
+                            &:hover { border-bottom: 1px dotted $color; }
+                        }
+                        
+                        .fab, .fas {
+                            margin-right: 8px;
+                            color: $tint;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

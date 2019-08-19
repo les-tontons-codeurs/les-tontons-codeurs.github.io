@@ -3,40 +3,34 @@
 // -------------------------------------------------------------------------
 
 article.page .body .gamebuino {
+    $w: 856;
+    $h: 462;
+    $sx: 273;
+    $sy: 94;
+    $sw: 320;
+    $sh: 256;
+
     margin: 1.75rem auto;
+    width: 100%;
     max-width: 428px;
-    
+
     .console {
-        // l'image de fond mesure 856 x 462 px
-        // pour obtenir un meilleur rendu sur
-        // une boîte de 428 x 231 px
         position: relative;
         margin: 0 auto;
-        padding-top: 53.97196262%; // 100 x 231/428
+        padding-top: percentage($h/$w);
 
         background-image: url('../images/gamebuino-856x462.png');
         background-size: contain;
         background-repeat: no-repeat;
-
-        // shadow
-        &:after {
-            content: '';
-            position: absolute;
-            left:    .4672897196%; // 100 x 2/428
-            top:    1.298701299%;  // 100 x 3/231
-            right:   .7009345794%; // 100 x (428-2-423)/428
-            bottom: 1.7316017316%; // 100 x (231-3-224)/231
-            border-radius: 10px;
-            box-shadow: 0 8px 16px rgba(#000, .5);
-        }
+        filter: drop-shadow(0 4px 8px rgba(#000, .5));
 
         .screen {
             position: absolute;
-            left:   31.7757009346%; // 100 x 136/428
-            top:    20.3463203463%; // 100 x 47/231
-            right:  30.8411214953%; // 100 x (428-136-160)/428
-            bottom: 24.2424242424%; // 100 x (231-47-128)/231
-            background-size: contain;
+            left: percentage($sx/$w);
+            top: percentage($sy/$h);
+            width: percentage($sw/$w);
+            height: percentage($sh/$h);
+            background-size: cover;
             background-repeat: no-repeat;
             border: 1px solid #000;
         }
@@ -44,55 +38,43 @@ article.page .body .gamebuino {
 }
 
 article.page .body .pygamer {
+    $w: 777;
+    $h: 457;
+    $sx: 249;
+    $sy: 101;
+    $sw: 280;
+    $sh: 224;
+
     margin: 1.75rem auto;
+    width: 100%;
     max-width: 428px;
-    
+
     .console {
-        // l'image de fond mesure 832 x 486 px
-        // pour obtenir un meilleur rendu sur
-        // une boîte de 416 x 243 px
         position: relative;
         margin: 0 auto;
-        padding-top: 58.4134615385%; // 100 x 243/416
+        padding-top: percentage($h/$w);
 
-        background-image: url('../images/pygamer-832x486.png');
+        background-image: url('../images/pygamer-777x457.png');
         background-size: contain;
         background-repeat: no-repeat;
-
-        // shadow
-        &:after {
-            content: '';
-            position: absolute;
-            left:    .2403846154%; // 100 x 1/416
-            top:    5.7613168724%; // 100 x 14/243
-            right:   .4807692308%; // 100 x (416-1-413)/416
-            bottom: 1.2345679012%; // 100 x (243-14-226)/243
-            border-radius: 40px 40px 86px 84px;
-            box-shadow: 0 8px 16px rgba(#000, .5);
-            
-            @media screen and (max-width: 600px) {
-                // ici on utilise un petit hack
-                // pas hyper précis, mais qui fait
-                // l'affaire à l'oeil nu
-                border-radius:
-                    calc((100vw - 2*30px) * .1)
-                    calc((100vw - 2*30px) * .1)
-                    calc((100vw - 2*30px) * .2)
-                    calc((100vw - 2*30px) * .2);
-                box-shadow: 0 8px 16px rgba(#000, .35);
-            }
-        }
+        filter: drop-shadow(0 4px 8px rgba(#000, .5));
 
         .screen {
             position: absolute;
-            left:   31.4903846154%; // 100 x 131/416
-            top:    19.341563786%;  // 100 x 47/243
-            right:  30.0480769231%; // 100 x (416-131-160)/416
-            bottom: 27.9835390947%; // 100 x (243-47-128)/243
-            background-size: contain;
+            left: percentage($sx/$w);
+            top: percentage($sy/$h);
+            width: percentage($sw/$w);
+            height: percentage($sh/$h);
+            background-size: cover;
             background-repeat: no-repeat;
             border: 1px solid #000;
         }
+    }
+}
+
+article.page .body .multicolumn {
+    .gamebuino, .pygamer {
+        margin: 0 auto;
     }
 }
 

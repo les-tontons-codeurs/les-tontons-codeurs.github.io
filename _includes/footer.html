@@ -4,5 +4,5 @@
     {% if year > start %}
         {% assign prefix = start | append: '-' %}
     {% endif %}
-    &copy {{ year | prepend: prefix }} {{ site.title }}
+    &copy {{ year | prepend: prefix }} <a href="mailto:{{ site.main_email }}">{{ site.title }}</a>
 </footer>

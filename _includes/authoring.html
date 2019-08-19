@@ -1,0 +1,20 @@
+<div class="authoring">
+    <span class="caption">Cet article a été rédigé par :</span>
+    <div class="authors">
+        {% for a in page.author %}
+            {% assign author = site.data.authors | where: "key", a | first %}
+            {% assign github = author.github | prepend: 'https://github.com/' %}
+            <div class="author">
+                <div class="photo" style="background-image:url('{{ site.baseurl | append: author.photo }}')"></div>
+                <div class="name">{{ author.nick }}</div>
+                <div class="details">
+                    <div class="rows">
+                        <i class="fab fa-discord"></i><span class="discord">{{ author.discord }}</span>
+                        <i class="fas fa-envelope"></i><span class="email"><a href="mailto:{{ author.email | encode_email }}?subject=[{{ site.title }}] {{ page.title }}">écrivez-lui</a></span>
+                        <i class="fab fa-github"></i><span class="github"><a href="{{ github }}">{{ author.github }}</a></span>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

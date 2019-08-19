@@ -1,0 +1,13 @@
+.sidebar .heading {
+    margin-bottom: 1em;
+    font-size: 1.1rem;
+    color: darken($sidebar_bgcolor, 25%);
+    text-shadow: 0 1px 0 #fff;
+    text-align: center;
+}
+
+.sidebar .tempo {
+    color: darken($sidebar_bgcolor, 15%);
+    text-shadow: 0 1px 1px #fff;
+    text-align: center;
+}
