@@ -8,13 +8,13 @@ tags: [Général]
 
 {% include myassets.html %}
 
-La console 32Blit était prévue pour une livraison chez les beta testeurs courant juillet.<br/>
+La console 32blit était prévue pour une livraison chez les beta testeurs courant juillet.<br/>
 Pour ma part, j'étais ravi de pouvoir prendre un peu de temps avant et après mon départ en vacances.
 
 <!--more-->
 
 Malheureusement, la sortie de la Raspberry Pi 4 que personne n'attendait a eu quelques conséquences chez Pimoroni.
-Le travail sur la 32Blit a pris du retard et un bug dans le PCB a été trouvé entre temps.<br/>
+Le travail sur la 32blit a pris du retard et un bug dans le PCB a été trouvé entre temps.<br/>
 Les équipes de Pimoroni ont décidé, quitte à retoucher le PCB, d'apporter quelques modifications au circuit et de le décorer pour les modèles Beta.
 La décoration utilise le [travail de Johan Vinet][1].
 <br/>
